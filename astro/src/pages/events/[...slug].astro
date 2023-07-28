@@ -1,0 +1,22 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { list } from "@/utils/constants";
+export function getStaticPaths() {
+  return list.map(({ title, description, slug }) => {
+    return {
+      params: { slug: slug },
+      props: { title, description },
+    };
+  });
+  // return [{ params: { slug: "event-1" } }];
+}
+
+const { title, description } = Astro.props;
+console.log(title);
+console.log(description);
+---
+
+<Layout title=`${title}`>
+  <h1>{title}</h1>
+  <p>{description}</p>
+</Layout>
