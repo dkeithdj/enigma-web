@@ -4,12 +4,15 @@ import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemas'
 import {structure} from './src/structure'
 
+export const projectId = process.env.SANITY_STUDIO_PROJECT_ID!
+export const dataset = process.env.SANITY_STUDIO_DATASET!
+
 export default defineConfig({
   name: 'default',
   title: 'enigma-cms',
 
-  projectId: process.env.SANITY_STUDIO_PROJECT_ID!,
-  dataset: 'production',
+  projectId: projectId,
+  dataset: dataset,
 
   plugins: [
     deskTool({
