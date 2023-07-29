@@ -27,11 +27,10 @@ const Nav = () => {
   return (
     <nav className="sticky top-0 z-20">
       <div className="flex items-center justify-between bg-theme_text-light backdrop-filter backdrop-blur-xl bg-opacity-60 border-b-2 px-4 md:px-20">
-        <div className="pt-2">
-          <a href="/">
-            <img src="/enigma_Horizontal.svg" alt="enigma" width="150" />
-          </a>
-        </div>
+        <a href="/" className="pt-2">
+          <img src="/enigma_Horizontal.svg" alt="enigma" width="150" />
+        </a>
+
         {matches && (
           <div className="flex space-x-6">
             <a href="/" className="hover:text-theme_accent-light">
@@ -45,9 +44,7 @@ const Nav = () => {
             </a>
           </div>
         )}
-        {/* <Badge className="bg-red-400 md:bg-yellow-400 lg:bg-orange-400 xl:bg-green-400">
-          .
-        </Badge> */}
+
         {!matches && (
           <div
             onClick={() => setToggled((prevToggle) => !prevToggle)}
@@ -74,6 +71,7 @@ const Nav = () => {
           </div>
         )}
       </div>
+
       {toggled && !matches && (
         <div className="fixed flex bg-gray-300 top-19 w-full  items-center justify-center backdrop-filter backdrop-blur-xl bg-opacity-60">
           <motion.div

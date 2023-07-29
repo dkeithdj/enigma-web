@@ -4,24 +4,27 @@ import { Badge } from "./ui/badge";
 import { Card, CardDescription, CardFooter, CardHeader } from "./ui/card";
 
 const Officer = ({
-  photo,
   first_name,
   last_name,
   position,
   program,
   year_level,
   term,
+  photo,
 }: {
-  photo?: string;
   first_name: string;
   last_name: string;
   position?: string;
   program?: string;
   year_level?: string;
   term?: string;
+  photo?: string;
 }) => {
   return (
-    <Card className="relative flex flex-col items-center w-[180px] h-[250px]">
+    <Card
+      key={last_name}
+      className="relative flex flex-col items-center w-[180px] h-[250px]"
+    >
       <motion.div className="absolute top-0 left-0" whileHover={{ y: 5 }}>
         <Badge>{program}</Badge>
       </motion.div>

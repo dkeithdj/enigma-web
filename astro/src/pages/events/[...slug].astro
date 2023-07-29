@@ -1,22 +1,23 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { list } from "@/utils/constants";
-export function getStaticPaths() {
-  return list.map(({ title, description, slug }) => {
-    return {
-      params: { slug: slug },
-      props: { title, description },
-    };
-  });
+import { getPost, getPosts } from "@/utils/sanity";
+import type { InferGetStaticParamsType } from "astro";
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map((post) => ({
+    params: { slug: post.slug.current },
+  }));
   // return [{ params: { slug: "event-1" } }];
 }
 
-const { title, description } = Astro.props;
-console.log(title);
-console.log(description);
+type Params = InferGetStaticParamsType<typeof getStaticPaths>;
+const { slug } = Astro.params as Params;
+
+const post = await getPost(slug);
 ---
 
-<Layout title=`${title}`>
-  <h1>{title}</h1>
-  <p>{description}</p>
+<Layout title=`${post.title}`>
+  <h1>{post.title}</h1>
+  <p>{post.slug.current}</p>
 </Layout>

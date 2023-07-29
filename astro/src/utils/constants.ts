@@ -19,6 +19,21 @@ export const list = [
     description: "series of competitions conducted by the organziation",
     slug: "trojan-olympiad",
   },
+  {
+    title: "IT Olympiad",
+    description: "series of competitions conducted outside the University",
+    slug: "it-olympiad",
+  },
+  {
+    title: "Hack4Gov",
+    description: "hackathon conducted by DICT",
+    slug: "hack-4-gov",
+  },
+  {
+    title: "Team Building",
+    description: "Team building",
+    slug: "team-building",
+  },
 ];
 export const adviser = {
   first_name: "Sheila Marie",

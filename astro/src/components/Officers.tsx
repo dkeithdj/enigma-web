@@ -7,6 +7,7 @@ const Officers = () => {
     <div className="flex justify-center gap-2 flex-wrap">
       {officers.map((officer) => (
         <Officer
+          key={officer.first_name}
           first_name={officer.first_name}
           last_name={officer.last_name}
           position={officer.position}

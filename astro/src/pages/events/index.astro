@@ -1,8 +1,21 @@
 ---
+import Events from "@/components/Events";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from "@/components/ui/card";
 import Layout from "@/layouts/Layout.astro";
+import { getPosts } from "@/utils/sanity";
+
+const posts = await getPosts();
 ---
 
 <Layout title="Events">
-  <section>events</section>
-  <a href="/events/event-1">click herer</a>
+  <section class="mx-20">
+    <Events posts={posts} client:load />
+  </section>
 </Layout>
