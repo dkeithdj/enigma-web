@@ -33,6 +33,7 @@ export async function getPost(slug: string): Promise<Post> {
 }
 
 export interface Post {
+  _id: string;
   _type: "post";
   _createdAt: string;
   title?: string;
