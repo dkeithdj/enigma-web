@@ -11,11 +11,5 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
     react(),
-    sanity({
-      projectId: process.env.SANITY_STUDIO_PROJECT_ID,
-      dataset: "production",
-      useCdn: false,
-      apiVersion: "2023-03-20",
-    }),
   ],
 });
