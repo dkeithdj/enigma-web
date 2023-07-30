@@ -1,0 +1,15 @@
+---
+import { imageUrlFor } from "@/utils/sanity";
+
+type Asset = Parameters<typeof imageUrlFor>[0];
+
+export interface Props {
+  asset: Asset;
+  alt: string;
+}
+
+const { asset, alt } = Astro.props;
+const image = imageUrlFor(asset);
+---
+
+<img src={image} alt={alt} />

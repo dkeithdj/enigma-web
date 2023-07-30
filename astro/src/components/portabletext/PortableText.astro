@@ -5,7 +5,7 @@ import Block from "./Block.astro";
 import List from "./List.astro";
 import ListItem from "./ListItem.astro";
 import Mark from "./Mark.astro";
-
+import Image from "./Image.astro";
 
 type PortableTextProps = Parameters<typeof PortableText>[0];
 
@@ -21,7 +21,11 @@ const defaultComponents = {
   mark: Mark,
 };
 
-const { value, components = {}, ...attrs } = Astro.props;
+const {
+  value,
+  components = { type: { image: Image } },
+  ...attrs
+} = Astro.props;
 
 const portableTextProps = {
   value: value,
