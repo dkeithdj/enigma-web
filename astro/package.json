@@ -33,6 +33,7 @@
     "tailwindcss-animate": "^1.0.6"
   },
   "devDependencies": {
-    "@sanity/types": "^3.14.4"
+    "@sanity/types": "^3.14.4",
+    "@tailwindcss/typography": "^0.5.9"
   }
 }
