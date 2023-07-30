@@ -1,8 +1,8 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import { getPost, getPosts } from "@/utils/sanity";
+import { getPost, getPosts } from "@/utils/sanity/client";
 import type { InferGetStaticParamsType } from "astro";
-import { PortableText } from "../../components/portabletext"
+import { PortableText } from "../../components/portabletext";
 
 export async function getStaticPaths() {
   const posts = await getPosts();
@@ -16,16 +16,16 @@ type Params = InferGetStaticParamsType<typeof getStaticPaths>;
 const { slug } = Astro.params as Params;
 
 const post = await getPost(slug);
-
-
 ---
 
 <Layout title=`${post.title}`>
-<div>
-  <center>{post.mainImage ? 
-    <img src={`${post.mainImage}`}/>:''}</center>
-      <center><h1>{post.title}</h1></center>
-      <p>{post.slug.current}</p>
-      <PortableText value={post.body}/>
-
+  <section class="">
+    <div>
+      {post.mainImage ? <img src={`${post.mainImage}`} /> : ""}
+      <h1>{post.title}</h1>
+    </div>
+    <div class="prose">
+      <PortableText value={post.body} />
+    </div>
+  </section>
 </Layout>

@@ -9,13 +9,13 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 import Layout from "@/layouts/Layout.astro";
-import { getPosts } from "@/utils/sanity";
+import { getPosts } from "@/utils/sanity/client";
 
 const posts = await getPosts();
 ---
 
 <Layout title="Events">
-  <section class="mx-20">
+  <section class="">
     <Events posts={posts} client:load />
   </section>
 </Layout>

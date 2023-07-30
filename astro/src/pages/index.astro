@@ -17,15 +17,15 @@ import { Button } from "@/components/ui/button";
 import Hero from "@/components/Hero.astro";
 import Events from "@/components/Events";
 import Officers from "@/components/Officers";
-import { getPosts } from "@/utils/sanity";
+import { getPosts } from "@/utils/sanity/client";
 
-export const posts = await getPosts();
+const posts = await getPosts();
 ---
 
 <Layout title="Index">
   <Hero />
   <!-- TODO: add limit to page Events -->
-  <Events posts={posts} client:load />
+  <Events posts={posts} limit={true} client:load />
   <section
     class="py-12 p-4 shadow-[inset_0_2px_4px_2px_rgb(0,0,0,0.05)] w-full bg-theme_text-light backdrop-filter backdrop-blur-xl bg-opacity-30"
   >
