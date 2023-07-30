@@ -5,3 +5,5 @@ export function formatDate(date: string) {
     year: "numeric",
   });
 }
+export { client } from "./client";
+export { imageUrlFor } from "./image";
