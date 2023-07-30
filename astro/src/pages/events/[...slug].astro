@@ -1,8 +1,9 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import { list } from "@/utils/constants";
 import { getPost, getPosts } from "@/utils/sanity";
 import type { InferGetStaticParamsType } from "astro";
+import { PortableText } from "../../components/portabletext"
+
 export async function getStaticPaths() {
   const posts = await getPosts();
   return posts.map((post) => ({
@@ -15,9 +16,16 @@ type Params = InferGetStaticParamsType<typeof getStaticPaths>;
 const { slug } = Astro.params as Params;
 
 const post = await getPost(slug);
+
+
 ---
 
 <Layout title=`${post.title}`>
-  <h1>{post.title}</h1>
-  <p>{post.slug.current}</p>
+<div>
+  <center>{post.mainImage ? 
+    <img src={`${post.mainImage}`}/>:''}</center>
+      <center><h1>{post.title}</h1></center>
+      <p>{post.slug.current}</p>
+      <PortableText value={post.body}/>
+
 </Layout>

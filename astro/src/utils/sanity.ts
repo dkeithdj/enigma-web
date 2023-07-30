@@ -1,6 +1,7 @@
 import { createClient } from "@sanity/client";
 import type { PortableTextBlock } from "@portabletext/types";
 import type { ImageAsset, Slug } from "@sanity/types";
+// import { blocksToText } from "@sanity/block-content-to-react";
 import groq from "groq";
 
 if (
@@ -23,9 +24,22 @@ export async function getPosts(): Promise<Post[]> {
   );
 }
 
+
+// modified to fetch image url
 export async function getPost(slug: string): Promise<Post> {
   return await client.fetch(
-    groq`*[_type == "post" && slug.current == $slug][0]`,
+    groq`
+      *[_type == "post" && slug.current == $slug][0] {
+        _id,
+        _type,
+        _createdAt,
+        title,
+        slug,
+        excerpt,
+        "mainImage": mainImage.asset->url,
+        body 
+      }
+    `,
     {
       slug,
     }

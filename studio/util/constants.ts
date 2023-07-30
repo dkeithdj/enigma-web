@@ -1,5 +1,5 @@
 // edit/add position levels here to reflect on Officer Position
-export const positions = [
+export const positions : any = [
   {title: 'President', value: 'president'},
   {title: 'Vice-President', value: 'vice-president'},
   {title: 'Secretary', value: 'secretary'},
@@ -14,7 +14,7 @@ export const positions = [
 ]
 
 // edit/add terms here to reflect on Officer Term
-export const term = [
+export const term : any = [
   {title: '2023-2024', value: '2023-2024'},
   {title: '2024-2025', value: '2024-2025'},
   {title: '2025-2026', value: '2025-2026'},

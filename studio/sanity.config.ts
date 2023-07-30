@@ -11,8 +11,8 @@ export default defineConfig({
   name: 'default',
   title: 'enigma-cms',
 
-  projectId: projectId,
-  dataset: dataset,
+  projectId: 'xhqnd9hi',
+  dataset: 'production',
 
   plugins: [
     deskTool({

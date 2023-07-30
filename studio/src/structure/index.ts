@@ -1,4 +1,4 @@
-export const structure = (S, context) =>
+export const structure = (S : any, context : any) =>
   S.list()
     .title('Structure Content')
     .items([
@@ -10,7 +10,7 @@ export const structure = (S, context) =>
       //   .child(S.editor().id('documents').schemaType('documents').documentId('documents')),
 
       ...S.documentTypeListItems().filter(
-        (listItem) =>
+        (listItem : any) =>
           ![
             'siteSettings',
             // 'documents',
