@@ -12,4 +12,6 @@ const { asset, alt } = Astro.props;
 const image = imageUrlFor(asset);
 ---
 
-<img src={image} alt={alt} />
+<div class="flex items-center">
+  <img src={`${image}`} alt={alt} />
+</div>
