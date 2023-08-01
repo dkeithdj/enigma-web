@@ -1,9 +1,16 @@
 import {defineField, defineType} from 'sanity'
-import {position_hierarchy, positions, program, term, year_level} from '../util/constants'
+import {
+  committee,
+  position_hierarchy,
+  positions,
+  program,
+  term,
+  year_level,
+} from '../util/constants'
 
 export default defineType({
-  name: 'officer',
-  title: 'Officer',
+  name: 'committee',
+  title: 'Committee',
   type: 'document',
   fields: [
     defineField({
@@ -31,15 +38,7 @@ export default defineType({
       title: 'Position',
       type: 'object',
       // validation: (Rule) => Rule.required(),
-      fields: [
-        {name: 'title', title: 'Title', type: 'string', options: {list: positions}},
-        {
-          name: 'hierarchy',
-          title: 'Hierarchy',
-          type: 'number',
-          options: {list: position_hierarchy},
-        },
-      ],
+      fields: [{name: 'title', title: 'Title', type: 'string', options: {list: committee}}],
     }),
     defineField({
       name: 'program',

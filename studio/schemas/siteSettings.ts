@@ -1,4 +1,5 @@
 import {defineType, defineField} from 'sanity'
+import {term} from '../util/constants'
 
 export default defineType({
   name: 'siteSettings',
@@ -24,6 +25,14 @@ export default defineType({
       name: 'ogImage',
       title: 'Open Graph Image',
       type: 'image',
+    }),
+    defineField({
+      name: 'current_term',
+      title: 'Current Term',
+      type: 'string',
+      options: {
+        list: term,
+      },
     }),
   ],
 })
