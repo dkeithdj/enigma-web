@@ -1,3 +1,9 @@
+export const positions = {
+  president: 1,
+  "vice-president": 2,
+  manager: 3,
+  secretary: 4,
+};
 export const list = [
   {
     title: "General Orientation",

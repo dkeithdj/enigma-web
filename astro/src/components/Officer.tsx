@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Badge } from "./ui/badge";
 import { Card, CardDescription, CardFooter, CardHeader } from "./ui/card";
+import { imageUrlFor } from "@/utils/sanity";
 
 const Officer = ({
   first_name,
@@ -33,7 +34,7 @@ const Officer = ({
       </div>
       <CardHeader>
         <Avatar className="bg-red-200 w-32 h-32">
-          <AvatarImage src="/enigma_Logo.svg" />
+          <AvatarImage src={photo ? photo : "/enigma_Logo.svg"} />
           <AvatarFallback>E</AvatarFallback>
         </Avatar>
       </CardHeader>
