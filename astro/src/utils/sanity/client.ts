@@ -49,17 +49,29 @@ export async function getPost(slug: string): Promise<Post> {
   );
 }
 
-export async function getOfficers(): Promise<Officers[]> {
+export async function getOfficers(): Promise<Officer[]> {
   return await client.fetch(
     groq`*[_type == "officer"] | order(position.hierarchy asc)`
   );
 }
 
-export async function getOfficersByTerm(
-  curr_term: string
-): Promise<Officers[]> {
+export async function getOfficersByTerm(curr_term: string): Promise<Officer[]> {
   return await client.fetch(
     groq`*[_type == "officer" && current_term == "${curr_term}"] | order(position.hierarchy asc)`
+  );
+}
+
+export async function getAdviserByTerm(curr_term: string): Promise<Adviser> {
+  return await client.fetch(
+    groq`*[_type == "adviser" && current_term == "${curr_term}"][0]`
+  );
+}
+
+export async function getCommitteeByTerm(
+  curr_term: string
+): Promise<Officer[]> {
+  return await client.fetch(
+    groq`*[_type == "committee" && current_term == "${curr_term}" && position.title match "Head"]`
   );
 }
 
@@ -67,27 +79,41 @@ export interface Officer {
   _id: string;
   _type: "officer";
   _createdAt: string;
-  title?: string;
-  slug: Slug;
-  excerpt?: string;
-  mainImage?: ImageAsset;
-  body: PortableTextBlock[];
-}
-export interface Officers {
-  year_level: string;
-  _rev: string;
-  program: string;
-  _type: "officer";
+  first_name: string;
   last_name: string;
-  _id: string;
+  image?: ImageAsset;
+  year_level: string;
+  program: string;
   position: {
     title: string;
-    hierarchy: string;
+    hierarchy: number;
   };
-  first_name: string;
-  image: ImageAsset;
   current_term: string;
+}
+export interface Committee {
+  _id: string;
+  _type: "committee";
   _createdAt: string;
+  first_name: string;
+  last_name: string;
+  image?: ImageAsset;
+  year_level: string;
+  program: string;
+  position: {
+    title: string;
+  };
+  current_term: string;
+}
+
+export interface Adviser {
+  _id: string;
+  _type: "adviser";
+  _createdAt: string;
+  first_name: string;
+  last_name: string;
+  image?: ImageAsset;
+  position: { title: string };
+  current_term: string;
 }
 
 export interface Post {

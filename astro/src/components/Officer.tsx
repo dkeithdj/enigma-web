@@ -26,12 +26,12 @@ const Officer = ({
       key={last_name}
       className="relative flex flex-col items-center w-[180px] h-[250px]"
     >
-      <motion.div className="absolute top-0 left-0" whileHover={{ y: 5 }}>
+      {/* <motion.div className="absolute top-0 left-0" whileHover={{ y: 5 }}>
         <Badge>{program}</Badge>
       </motion.div>
       <div className="absolute top-0 right-0">
         <Badge>{year_level}</Badge>
-      </div>
+      </div> */}
       <CardHeader>
         <Avatar className="bg-red-200 w-32 h-32">
           <AvatarImage src={photo ? photo : "/enigma_Logo.svg"} />
