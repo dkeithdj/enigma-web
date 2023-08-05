@@ -15,7 +15,6 @@ export const schemaTypes = [
   category,
   blockContent,
   siteSettings,
-  documents,
   officer,
   committee,
   adviser,
