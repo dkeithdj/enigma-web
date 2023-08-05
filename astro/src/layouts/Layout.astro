@@ -19,13 +19,15 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body>
+  <body class="scrollbar-none">
     <div class="gradient"></div>
     <div class="main"></div>
     <main class="font-poppins relative">
-      <Nav client:load />
-      <slot />
-      <Footer />
+      <div class="flex flex-col min-h-screen">
+        <Nav client:load />
+        <slot />
+        <Footer />
+      </div>
     </main>
   </body>
 </html>

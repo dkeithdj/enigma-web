@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Badge } from "./ui/badge";
 import { useMediaQuery } from "@/utils/useMediaQuery";
 import { motion } from "framer-motion";
+import useReadingProgress from "@/utils/useReadingProgress";
 
 const navMotion = {
   visible: {
@@ -24,6 +25,7 @@ const itemMotion = {
 const Nav = () => {
   const [toggled, setToggled] = useState(false);
   const matches = useMediaQuery("(min-width: 768px)");
+  const completion = useReadingProgress();
   return (
     <nav className="sticky top-0 z-20">
       <div className="flex items-center justify-between bg-theme_text-light backdrop-filter backdrop-blur-xl bg-opacity-60 border-b-2 px-4 md:px-20">
@@ -71,7 +73,6 @@ const Nav = () => {
           </div>
         )}
       </div>
-
       {toggled && !matches && (
         <div className="fixed flex bg-gray-300 top-19 w-full  items-center justify-center backdrop-filter backdrop-blur-xl bg-opacity-60">
           <motion.div
@@ -92,6 +93,10 @@ const Nav = () => {
           </motion.div>
         </div>
       )}
+      <span
+        style={{ transform: `translateX(${completion - 100}%)` }}
+        className="absolute bg-gradient-to-l from-red-700 to-theme_primary h-1 w-full bottom-0"
+      />
     </nav>
   );
 };
