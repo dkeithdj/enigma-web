@@ -2,46 +2,33 @@
 ---
 
 <section class="pb-24 md:px-20">
-  <div class="relative w-full hidden md:block">
-    <div
-      class="absolute top-4 right-4 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-50 animate-blob"
-    >
-    </div>
-    <div
-      class="absolute top-4 right-64 w-72 h-72 bg-red-300 rounded-full mix-blend-multiply filter blur-xl opacity-50 animate-blob animation-delay-400"
-    >
-    </div>
-    <div
-      class="absolute top-28 right-32 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-50 animate-blob animation-delay-200"
-    >
-    </div>
-  </div>
-  <!-- Flex Container -->
-  <div
-    class="relative flex flex-col-reverse justify-center px-6 mx-auto mt-10 space-y-0 md:space-y-0 md:flex-row"
-  >
-    <!-- Left item -->
-    <div class="flex flex-col justify-center md:basis-1/2">
+  <div class="grid md:grid-cols-2 items-center justify-items-center gap-5">
+    <div class="flex flex-col order-2 md:order-1 text-left">
       <div
-        class="text-5xl font-bold text-center md:text-8xl md:text-left text-theme_primary"
+        class="text-4xl font-bold text-center md:text-7xl lg:text-8xl md:text-left text-theme_primary"
       >
         UM
       </div>
       <div
-        class="text-5xl font-bold text-center md:text-8xl md:text-left text-theme_accent-light"
+        class="text-4xl font-bold text-center md:text-7xl lg:text-8xl md:text-left text-theme_accent-light"
       >
         ENIGMA
       </div>
 
       <p
-        class="text-center font-semibold text-darkGrayishBlue pt-12 md:text-left"
+        class="text-center font-semibold pt-12 text-md md:text-lg md:text-left"
       >
         Ignite Aspirations, Spark Excellence
       </p>
     </div>
-    <!-- Image -->
-    <div class="md:w-1/2">
-      <img src="/enigma_Logo.svg" alt="enigma" class="mx-auto w-[300px]" />
+    <div class="order-1 md:order-2">
+      <div class="relative">
+        <img
+          src="/enigma_Logo.svg"
+          alt="enigma"
+          class="w-80 h-80 object-cover lg:w-[500px] lg:h-[500px]"
+        />
+      </div>
     </div>
   </div>
 </section>

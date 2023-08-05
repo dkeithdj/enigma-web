@@ -23,7 +23,7 @@ const Author = ({ post }: { post: Post }) => {
           <p className="text-sm text-gray-600">{formatDate(post._createdAt)}</p>
         </div>
       </div>
-      <Separator className="my-4 h-1.5 rounded-full" />
+      <Separator className="my-4 h-1 rounded-full" />
     </>
   );
 };
