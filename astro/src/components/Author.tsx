@@ -1,10 +1,10 @@
 import { imageUrlFor, formatDate } from "@/utils/sanity";
 import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import type { Post } from "@/utils/sanity/client";
+import type { PostProp } from "@/utils/sanity/client";
 import { Separator } from "./ui/separator";
 
-const Author = ({ post }: { post: Post }) => {
+const Author = ({ post }: { post: PostProp }) => {
   return (
     <>
       <div className="flex gap-4 items-center">

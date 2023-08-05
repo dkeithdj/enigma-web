@@ -22,14 +22,14 @@ export async function getTerm(): Promise<{ current_term: string }> {
   return await client.fetch(groq`*[_type == "siteSettings"][0] {current_term}`);
 }
 
-export async function getPosts(): Promise<Post[]> {
+export async function getPosts(): Promise<PostProp[]> {
   return await client.fetch(
     groq`*[_type == "post" && defined(slug.current)] | order(_createdAt desc)`
   );
 }
 
 // modified to fetch image url
-export async function getPost(slug: string): Promise<Post> {
+export async function getPost(slug: string): Promise<PostProp> {
   return await client.fetch(
     groq`
       *[_type == "post" && slug.current == $slug][0] {
@@ -49,19 +49,23 @@ export async function getPost(slug: string): Promise<Post> {
   );
 }
 
-export async function getOfficers(): Promise<Officer[]> {
+export async function getOfficers(): Promise<OfficerProp[]> {
   return await client.fetch(
     groq`*[_type == "officer"] | order(position.hierarchy asc)`
   );
 }
 
-export async function getOfficersByTerm(curr_term: string): Promise<Officer[]> {
+export async function getOfficersByTerm(
+  curr_term: string
+): Promise<OfficerProp[]> {
   return await client.fetch(
     groq`*[_type == "officer" && current_term == "${curr_term}"] | order(position.hierarchy asc)`
   );
 }
 
-export async function getAdviserByTerm(curr_term: string): Promise<Adviser> {
+export async function getAdviserByTerm(
+  curr_term: string
+): Promise<AdviserProp> {
   return await client.fetch(
     groq`*[_type == "adviser" && current_term == "${curr_term}"][0]`
   );
@@ -69,13 +73,13 @@ export async function getAdviserByTerm(curr_term: string): Promise<Adviser> {
 
 export async function getCommitteeByTerm(
   curr_term: string
-): Promise<Officer[]> {
+): Promise<OfficerProp[]> {
   return await client.fetch(
     groq`*[_type == "committee" && current_term == "${curr_term}" && position.title match "Head"]`
   );
 }
 
-export interface Officer {
+export interface OfficerProp {
   _id: string;
   _type: "officer";
   _createdAt: string;
@@ -90,7 +94,7 @@ export interface Officer {
   };
   current_term: string;
 }
-export interface Committee {
+export interface CommitteeProp {
   _id: string;
   _type: "committee";
   _createdAt: string;
@@ -105,7 +109,7 @@ export interface Committee {
   current_term: string;
 }
 
-export interface Adviser {
+export interface AdviserProp {
   _id: string;
   _type: "adviser";
   _createdAt: string;
@@ -116,7 +120,7 @@ export interface Adviser {
   current_term: string;
 }
 
-export interface Post {
+export interface PostProp {
   _id: string;
   _type: "post";
   _createdAt: string;
