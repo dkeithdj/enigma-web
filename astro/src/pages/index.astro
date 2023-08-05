@@ -24,7 +24,9 @@ console.log(fetchAdviser);
 
 <Layout title="Index">
   <Hero />
-  <Events posts={posts} limit={true} client:load />
+  <section class="py-12 px-4 md:px-20">
+    <Events posts={posts} limit={true} client:load />
+  </section>
   <section
     class="py-12 p-4 shadow-[inset_0_2px_4px_2px_rgb(0,0,0,0.05)] w-full bg-theme_text-light backdrop-filter backdrop-blur-xl bg-opacity-30"
   >
@@ -86,5 +88,4 @@ console.log(fetchAdviser);
       }
     </div>
   </section>
-  <section class="py-12 px-4">about/else</section>
-</Layout>@/components/Events
+</Layout>
