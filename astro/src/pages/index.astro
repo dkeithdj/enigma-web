@@ -23,7 +23,7 @@ const committeeHeads = await getCommitteeByTerm(currentTerm.current_term);
 
 <Layout title="Index">
   <Hero />
-  <section class="py-12 px-4 md:px-20">
+  <section class="py-12 mx-4 md:px-20">
     <Events posts={posts} limit={true} client:only="react" />
   </section>
   <section
