@@ -37,8 +37,8 @@ export async function getPost(slug: string): Promise<Post> {
         _type,
         _createdAt,
         title,
+        author->{_id, name, slug, image, bio},
         slug,
-        excerpt,
         "mainImage": mainImage.asset->url,
         body 
       }
@@ -121,8 +121,19 @@ export interface Post {
   _type: "post";
   _createdAt: string;
   title?: string;
+  author: Author;
   slug: Slug;
   excerpt?: string;
   mainImage?: ImageAsset;
   body: PortableTextBlock[];
+}
+
+export interface Author {
+  _id: string;
+  _type: "author";
+  _createdAt: string;
+  name: string;
+  slug: Slug;
+  image: ImageAsset;
+  bio: PortableTextBlock[];
 }

@@ -3,7 +3,9 @@ import Layout from "@/layouts/Layout.astro";
 import { getPost, getPosts } from "@/utils/sanity/client";
 import type { InferGetStaticParamsType } from "astro";
 import { PortableText } from "../../components/portabletext";
-import { formatDate } from "@/utils/sanity";
+import { formatDate, imageUrlFor } from "@/utils/sanity";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import Author from "@/components/Author";
 
 export async function getStaticPaths() {
   const posts = await getPosts();
@@ -19,7 +21,7 @@ const post = await getPost(slug);
 ---
 
 <Layout title={post.title!}>
-  <div class="relative w-full h-[150px] md:h-[250px]">
+  <div class="relative w-full h-[150px]">
     <div
       class="absolute inset-0 bg-center bg-cover"
       style={{
@@ -30,18 +32,16 @@ const post = await getPost(slug);
     <div class="absolute inset-0 bg-gradient-to-t from-white to-transparent">
     </div>
     <div class="absolute inset-0 bg-white bg-opacity-50"></div>
-    <div class="relative flex justify-center items-end h-full">
-      <div class="text-center">
-        <h1 class="text-3xl md:text-5xl font-bold pb-4">
+  </div>
+  <article class="max-w-5xl mx-auto">
+    <div class="mt-6 mx-auto prose">
+      <div class="not-prose">
+        <h1 class="text-4xl font-bold">
           {post.title}
         </h1>
-        <p class="pb-4">{formatDate(post._createdAt)}</p>
+        {post.author && <Author {post} client:load />}
       </div>
-    </div>
-  </div>
-  <section class="mt-4 mx-4 md:mx-auto">
-    <div class="prose prose-rose prose-sm md:prose-md break-words mx-auto">
       <PortableText value={post.body} />
     </div>
-  </section>
+  </article>
 </Layout>

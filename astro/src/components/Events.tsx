@@ -10,29 +10,27 @@ import {
   CardTitle,
   CardDescription,
   CardContent,
+  CardFooter,
 } from "./ui/card";
 import { useMediaQuery } from "@/utils/useMediaQuery";
 import { motion } from "framer-motion";
 import { list } from "@/utils/constants";
 import type { Post } from "@/utils/sanity/client";
-import { imageUrlFor } from "@/utils/sanity";
+import { formatDate, imageUrlFor } from "@/utils/sanity";
 import { Avatar, AvatarImage, AvatarFallback } from "@radix-ui/react-avatar";
+import { getRelativeTime } from "@/utils/relativeTime";
 
-const EventsTestConditional = ({
-  posts,
-  limit,
-}: {
-  posts: Post[];
-  limit?: boolean;
-}) => {
+const Events = ({ posts, limit }: { posts: Post[]; limit?: boolean }) => {
   const matches = useMediaQuery("(min-width: 768px)");
+
+  const aa = new Date("2023-08-03T10:50:19Z");
 
   const recentPost = posts.filter((_, index) => index === 0);
   const oldPosts = limit
     ? posts.filter((_, index) => index >= 1 && index <= 3)
     : posts.filter((_, index) => index !== 0);
   return (
-    <section className="py-12 px-4 md:px-20">
+    <>
       <div className="flex justify-between">
         <div className="text-3xl pb-8 font-bold ">✨EVENTS</div>
         {limit && (
@@ -73,7 +71,9 @@ const EventsTestConditional = ({
                   <CardTitle>{post.title}</CardTitle>
                   <CardDescription>{post.slug.current}</CardDescription>
                 </CardHeader>
-                <CardContent />
+                <div className="absolute bottom-2 right-2 text-sm font-semibold">
+                  {getRelativeTime(post._createdAt)}
+                </div>
               </Card>
             </a>
           </motion.div>
@@ -91,7 +91,9 @@ const EventsTestConditional = ({
               className="absolute inset-0 bg-center bg-cover rounded-lg"
               style={{
                 backgroundImage: `url('${
-                  post.mainImage && imageUrlFor(post.mainImage).url()
+                  post.mainImage
+                    ? imageUrlFor(post.mainImage).url()
+                    : "/enigma_Logo.svg"
                 }')`,
               }}
             ></div>
@@ -105,14 +107,16 @@ const EventsTestConditional = ({
                   <CardTitle>{post.title}</CardTitle>
                   <CardDescription>{post.slug.current}</CardDescription>
                 </CardHeader>
-                <CardContent />
+                <div className="absolute bottom-2 right-2 text-sm font-semibold">
+                  {getRelativeTime(post._createdAt)}
+                </div>
               </Card>
             </a>
           </motion.div>
         ))}
       </div>
-    </section>
+    </>
   );
 };
 
-export default EventsTestConditional;
+export default Events;
