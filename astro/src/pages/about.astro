@@ -1,10 +1,11 @@
 ---
+import LogoProcess from "@/components/LogoProcess";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import Layout from "@/layouts/Layout.astro";
 ---
 
 <Layout title="About">
-  <section class="py-12 p-4 w-full">
+  <section class="py-12 p-4 md:mx-20">
     <h1 class="text-5xl text-center pb-8">
       About: <span class="font-semibold">The Organization</span>
     </h1>
@@ -56,9 +57,10 @@ import Layout from "@/layouts/Layout.astro";
       </CardContent>
     </Card>
   </section>
-  <section>
+  <!-- <section class="py-12 p-4 md:mx-20">
     <h1 class="text-5xl text-center pb-8">
       About: <span class="font-semibold">The Logo</span>
     </h1>
-  </section>
+    <LogoProcess client:load />
+  </section> -->
 </Layout>
