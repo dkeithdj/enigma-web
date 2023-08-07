@@ -13,7 +13,7 @@ if (
   throw new Error("Did you forget to run sanity init --env?");
 }
 
-const client = createClient({
+export const client = createClient({
   projectId: import.meta.env.PUBLIC_SANITY_PROJECT_ID,
   dataset: import.meta.env.PUBLIC_SANITY_DATASET,
   token: token,
