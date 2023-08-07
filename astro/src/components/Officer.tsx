@@ -24,7 +24,7 @@ const Officer = ({
   return (
     <Card
       key={last_name}
-      className="relative flex flex-col items-center w-[180px] h-[250px]"
+      className="relative flex flex-col items-center w-[180px] h-[270px]"
     >
       {/* <motion.div className="absolute top-0 left-0" whileHover={{ y: 5 }}>
         <Badge>{program}</Badge>
@@ -39,11 +39,27 @@ const Officer = ({
         </Avatar>
       </CardHeader>
       <CardDescription>
+        {program ? (
+          <div className="flex justify-center items-center gap-1">
+            <Badge className="bg-theme_primary hover:bg-theme_accent-light">
+              {program}
+            </Badge>
+            <Badge className="bg-theme_accent-light hover:bg-theme_primary whitespace-nowrap">
+              {year_level} Year
+            </Badge>
+          </div>
+        ) : (
+          <div className="flex justify-center items-center gap-1">
+            <Badge className="bg-theme_primary hover:bg-theme_accent-light">
+              Professor
+            </Badge>
+          </div>
+        )}
         <div className="text-sm text-center text-black">
           {first_name} <span className="font-semibold">{last_name}</span>
         </div>
       </CardDescription>
-      <CardFooter>
+      <CardFooter className="flex flex-col">
         <div className="text-sm text-center text-gray-400 whitespace-nowrap">
           {position}
         </div>

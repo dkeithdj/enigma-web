@@ -5,7 +5,9 @@ import type { InferGetStaticParamsType } from "astro";
 import { PortableText } from "../../components/portabletext";
 import { formatDate, imageUrlFor } from "@/utils/sanity";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import Author from "@/components/Author";
+import { ChevronLeft, Copy } from "lucide-react";
+import EventHeader from "@/components/EventHeader";
+import { Separator } from "@/components/ui/separator";
 
 export async function getStaticPaths() {
   const posts = await getPosts();
@@ -18,6 +20,7 @@ type Params = InferGetStaticParamsType<typeof getStaticPaths>;
 const { slug } = Astro.params as Params;
 
 const post = await getPost(slug);
+const shareUrl = Astro.url.href;
 ---
 
 <Layout title={post.title!}>
@@ -31,16 +34,23 @@ const post = await getPost(slug);
     </div>
     <div class="absolute inset-0 bg-gradient-to-t from-white to-transparent">
     </div>
-    <div class="absolute inset-0 bg-white bg-opacity-50"></div>
   </div>
-  <article class="max-w-5xl mx-auto">
-    <div class="mx-4 mt-6 md:mx-auto prose break-all">
+  <article class="max-w-5xl min-w-5xl mx-auto pb-4">
+    <div
+      class="px-6 mt-6 md:mx-auto prose prose-img:rounded-xl max-w-none break-words"
+    >
       <div class="not-prose">
-        <h1 class="text-4xl font-bold">
-          {post.title}
-        </h1>
-        {post.author && <Author {post} client:load />}
+        <a href="/events">
+          <div
+            class="flex items-center text-theme_accent-light hover:text-theme_accent-light/80"
+          >
+            <ChevronLeft width={20} height={20} />
+            <span class="text-lg">Go Back</span>
+          </div>
+        </a>
       </div>
+      <EventHeader post={post} url={shareUrl} client:load />
+      <Separator className="h-0.5 rounded-full" />
       <PortableText value={post.body} />
     </div>
   </article>

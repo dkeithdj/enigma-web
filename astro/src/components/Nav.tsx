@@ -93,10 +93,10 @@ const Nav = () => {
           </motion.div>
         </div>
       )}
-      <span
+      {/* <span
         style={{ transform: `translateX(${completion - 100}%)` }}
         className="absolute bg-gradient-to-l from-red-700 to-theme_primary h-1 w-full bottom-0"
-      />
+      /> */}
     </nav>
   );
 };

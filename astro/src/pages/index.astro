@@ -13,6 +13,8 @@ import {
 import { imageUrlFor } from "@/utils/sanity";
 import Events from "@/components/Events";
 import Officers from "@/components/Officers";
+import { Facebook, Mails } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
 
 const posts = await getPosts();
 const currentTerm = await getTerm();
@@ -23,11 +25,11 @@ const committeeHeads = await getCommitteeByTerm(currentTerm.current_term);
 
 <Layout title="Index">
   <Hero />
-  <section class="py-12 mx-4 md:px-20">
+  <section class="py-12 px-4 md:px-20">
     <Events posts={posts} limit={true} client:only="react" />
   </section>
   <section
-    class="py-12 p-4 shadow-[inset_0_2px_4px_2px_rgb(0,0,0,0.05)] w-full bg-theme_text-light backdrop-filter backdrop-blur-xl bg-opacity-30"
+    class="py-12 px-4 md:px-20 shadow-[inset_0_2px_4px_2px_rgb(0,0,0,0.05)] w-full bg-theme_text-light backdrop-filter backdrop-blur-xl bg-opacity-30"
   >
     <Officers
       {adviser}
@@ -36,5 +38,40 @@ const committeeHeads = await getCommitteeByTerm(currentTerm.current_term);
       currentTerm={currentTerm.current_term}
       client:only="react"
     />
+  </section>
+  <section class="py-12 px-4 md:px-20">
+    <div class="flex flex-col">
+      <div class="text-5xl font-bold">
+        Connect with <span
+          class="bg-gradient-to-l from-pink-600 to-red-700 bg-clip-text text-transparent"
+          >Us</span
+        >
+      </div>
+      <div class="text-2xl font-medium py-2">
+        Explore our social media channels to read about the Organization's
+        latest updates.
+      </div>
+      <Separator className="py-0.5" />
+      <a
+        href="https://facebook.com/um.enigma"
+        class="flex justify-between py-2 hover:bg-theme_accent-light/30"
+      >
+        <p class="flex">
+          <Facebook className="mr-4" />
+          <span class="hidden md:block">Facebook</span>
+        </p> University of Mindanao Enigma
+      </a>
+      <Separator />
+      <a
+        href="mailto:enigma@umindanao.edu.ph"
+        class="flex justify-between py-2 hover:bg-theme_accent-light/30"
+      >
+        <p class="flex">
+          <Mails className="mr-4" />
+          <span class="hidden md:block">Email</span>
+        </p> enigma@umindanao.edu.ph
+      </a>
+      <Separator className="py-0.5" />
+    </div>
   </section>
 </Layout>
