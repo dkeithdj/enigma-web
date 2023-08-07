@@ -23,6 +23,8 @@ export const client = createClient({
   apiVersion: "2023-03-20", // date of setup
 });
 
+console.log(client.config());
+
 export async function getTerm(): Promise<{ current_term: string }> {
   return await client.fetch(groq`*[_type == "siteSettings"][0] {current_term}`);
 }
