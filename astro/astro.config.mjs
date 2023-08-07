@@ -8,6 +8,7 @@ import vercel from "@astrojs/vercel/serverless";
 // https://astro.build/config
 export default defineConfig({
   output: "server",
+  site: "https://um-cce-enigma.vercel.app",
   integrations: [
     tailwind({
       applyBaseStyles: false,

@@ -4,7 +4,9 @@ import type { ImageAsset, Slug } from "@sanity/types";
 // import { blocksToText } from "@sanity/block-content-to-react";
 import groq from "groq";
 
-const token = import.meta.env?.SANITY_TOKEN || process.env.SANITY_TOKEN;
+const token =
+  import.meta.env?.PUBLIC_SANITY_READ_TOKEN ||
+  process.env.PUBLIC_SANITY_READ_TOKEN;
 
 if (
   !import.meta.env.PUBLIC_SANITY_PROJECT_ID ||
