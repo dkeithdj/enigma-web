@@ -18,6 +18,7 @@
     "@radix-ui/react-separator": "^1.0.3",
     "@radix-ui/react-slot": "^1.0.2",
     "@sanity/block-content-to-react": "^3.0.0",
+    "@tailwindcss/typography": "^0.5.9",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "astro": "^2.8.5",
@@ -30,12 +31,11 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tailwind-merge": "^1.14.0",
+    "tailwind-scrollbar": "^3.0.5",
     "tailwindcss": "^3.3.3",
     "tailwindcss-animate": "^1.0.6"
   },
   "devDependencies": {
-    "@sanity/types": "^3.14.4",
-    "@tailwindcss/typography": "^0.5.9",
-    "tailwind-scrollbar": "^3.0.4"
+    "@sanity/types": "^3.14.4"
   }
 }
