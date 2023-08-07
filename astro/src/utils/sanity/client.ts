@@ -73,7 +73,7 @@ export async function getAdviserByTerm(
 
 export async function getCommitteeByTerm(
   curr_term: string
-): Promise<OfficerProp[]> {
+): Promise<CommitteeProp[]> {
   return await client.fetch(
     groq`*[_type == "committee" && current_term == "${curr_term}" && position.title match "Head"]`
   );
