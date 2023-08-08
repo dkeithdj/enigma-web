@@ -16,24 +16,17 @@ import Officers from "@/components/Officers";
 import { Facebook, Mails } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 
-const posts = await getPosts();
+// const posts = await getPosts();
 // const currentTerm = await getTerm();
 // const adviser = await getAdviserByTerm(currentTerm.current_term);
 // const officers = await getOfficersByTerm(currentTerm.current_term);
 // const committeeHeads = await getCommitteeByTerm(currentTerm.current_term);
-
-if (!posts) {
-  return new Response(null, {
-    status: 500,
-    statusText: "Error",
-  });
-}
 ---
 
 <Layout title="Index">
   <Hero />
   <section class="py-12 px-4 md:px-20">
-    <Events posts={posts} limit={true} client:only="react" />
+    <!-- <Events posts={posts} limit={true} client:only="react" /> -->
   </section>
   <!-- <section
     class="py-12 px-4 md:px-20 shadow-[inset_0_2px_4px_2px_rgb(0,0,0,0.05)] w-full bg-theme_text-light backdrop-filter backdrop-blur-xl bg-opacity-30"
