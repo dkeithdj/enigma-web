@@ -3,7 +3,7 @@ import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
 import sanity from "astro-sanity";
 
-import vercel from "@astrojs/vercel/serverless";
+import netlify from "@astrojs/netlify/functions";
 
 // https://astro.build/config
 export default defineConfig({
@@ -15,8 +15,5 @@ export default defineConfig({
     }),
     react(),
   ],
-  adapter: vercel(),
-  vite: {
-    ssr: { external: ["url"] },
-  },
+  adapter: netlify(),
 });
