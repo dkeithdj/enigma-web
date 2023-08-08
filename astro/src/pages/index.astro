@@ -1,8 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Officer from "@/components/Officer";
 // import { adviser, committees } from "@/utils/constants";
 import Hero from "@/components/Hero.astro";
+// import Officer from "@/components/Officer";
 // import {
 //   getAdviserByTerm,
 //   getCommitteeByTerm,
@@ -10,9 +10,9 @@ import Hero from "@/components/Hero.astro";
 //   getPosts,
 //   getTerm,
 // } from "@/utils/sanity/client";
-import { client, imageUrlFor } from "@/utils/sanity";
-import Events from "@/components/Events";
-import Officers from "@/components/Officers";
+// import { client, imageUrlFor } from "@/utils/sanity";
+// import Events from "@/components/Events";
+// import Officers from "@/components/Officers";
 import { Facebook, Mails } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 
@@ -29,12 +29,12 @@ import { Separator } from "@/components/ui/separator";
 //     import.meta.env.PUBLIC_SANITY_DATASET
 //   }?query=*[_type=="post"][0]`
 // );
-const response = await fetch(
-  `https://xhqnd9hi.api.sanity.io/v2023-03-20/data/query/production?query=*[_type=="post"][0]`
-);
+// const response = await fetch(
+//   `https://xhqnd9hi.api.sanity.io/v2023-03-20/data/query/production?query=*[_type=="post"][0]`
+// );
 
-const data = await response.json();
-console.log(data.result);
+// const data = await response.json();
+// console.log(data.result);
 ---
 
 <Layout title="Index">
