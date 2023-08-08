@@ -16,7 +16,7 @@ const title = Astro.props.title || settings.title;
 const description = Astro.props.description || settings.description;
 const canonicalURL = Astro.props.canonicalURL || settings.url;
 // const image = new URL(Astro.props.image || "/openImage.png", Astro.site);
-const image = imageUrlFor(settings.ogImage).url();
+const image = imageUrlFor(settings.ogImage).url() || "/openImage.png";
 ---
 
 <meta charset="utf-8" />
@@ -63,8 +63,8 @@ const image = imageUrlFor(settings.ogImage).url();
 <meta property="og:image:secure_url" content={image} />
 
 <!-- Twitter -->
-<!-- <meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={canonicalURL} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={image} /> -->
+<meta property="twitter:image" content={image} />

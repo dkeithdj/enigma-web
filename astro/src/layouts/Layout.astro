@@ -11,7 +11,7 @@ export interface Props {
 const { seo } = Astro.props;
 ---
 
-<MainLayout seo={seo}>
+<MainLayout seo={{ ...seo }}>
   <body
     class="scrollbar-thin scrollbar-thumb-theme_primary/70 scrollbar-thumb-rounded-lg"
   >
