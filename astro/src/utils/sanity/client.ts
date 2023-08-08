@@ -24,19 +24,31 @@ export const client = createClient({
 });
 
 export async function getTerm(): Promise<{ current_term: string }> {
-  return await client.fetch(groq`*[_type == "siteSettings"][0] {current_term}`);
+  return await client
+    .fetch(groq`*[_type == "siteSettings"][0] {current_term}`)
+    .catch(console.error);
+}
+
+export async function test(): Promise<{ current_term: string }> {
+  const response = await client
+    .fetch(groq`*[_type == "siteSettings"][0] {current_term}`)
+    .catch(console.error);
+  return response;
 }
 
 export async function getPosts(): Promise<PostProp[]> {
-  return await client.fetch(
-    groq`*[_type == "post" && defined(slug.current)] | order(_createdAt desc)`
-  );
+  return await client
+    .fetch(
+      groq`*[_type == "post" && defined(slug.current)] | order(_createdAt desc)`
+    )
+    .catch(console.error);
 }
 
 // modified to fetch image url
 export async function getPost(slug: string): Promise<PostProp> {
-  return await client.fetch(
-    groq`
+  return await client
+    .fetch(
+      groq`
       *[_type == "post" && slug.current == $slug][0] {
         _id,
         _type,
@@ -48,40 +60,45 @@ export async function getPost(slug: string): Promise<PostProp> {
         body 
       }
     `,
-    {
-      slug,
-    }
-  );
+      {
+        slug,
+      }
+    )
+    .catch(console.error);
 }
 
 export async function getOfficers(): Promise<OfficerProp[]> {
-  return await client.fetch(
-    groq`*[_type == "officer"] | order(position.hierarchy asc)`
-  );
+  return await client
+    .fetch(groq`*[_type == "officer"] | order(position.hierarchy asc)`)
+    .catch(console.error);
 }
 
 export async function getOfficersByTerm(
   curr_term: string
 ): Promise<OfficerProp[]> {
-  return await client.fetch(
-    groq`*[_type == "officer" && current_term == "${curr_term}"] | order(position.hierarchy asc)`
-  );
+  return await client
+    .fetch(
+      groq`*[_type == "officer" && current_term == "${curr_term}"] | order(position.hierarchy asc)`
+    )
+    .catch(console.error);
 }
 
 export async function getAdviserByTerm(
   curr_term: string
 ): Promise<AdviserProp> {
-  return await client.fetch(
-    groq`*[_type == "adviser" && current_term == "${curr_term}"][0]`
-  );
+  return await client
+    .fetch(groq`*[_type == "adviser" && current_term == "${curr_term}"][0]`)
+    .catch(console.error);
 }
 
 export async function getCommitteeByTerm(
   curr_term: string
 ): Promise<CommitteeProp[]> {
-  return await client.fetch(
-    groq`*[_type == "committee" && current_term == "${curr_term}" && position.title match "Head"]`
-  );
+  return await client
+    .fetch(
+      groq`*[_type == "committee" && current_term == "${curr_term}" && position.title match "Head"]`
+    )
+    .catch(console.error);
 }
 
 export interface OfficerProp {
