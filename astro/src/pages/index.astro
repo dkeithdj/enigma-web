@@ -17,10 +17,10 @@ import { Facebook, Mails } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 
 const posts = await getPosts();
-const currentTerm = await getTerm();
-const adviser = await getAdviserByTerm(currentTerm.current_term);
-const officers = await getOfficersByTerm(currentTerm.current_term);
-const committeeHeads = await getCommitteeByTerm(currentTerm.current_term);
+// const currentTerm = await getTerm();
+// const adviser = await getAdviserByTerm(currentTerm.current_term);
+// const officers = await getOfficersByTerm(currentTerm.current_term);
+// const committeeHeads = await getCommitteeByTerm(currentTerm.current_term);
 
 if (!posts) {
   return new Response(null, {
@@ -35,7 +35,7 @@ if (!posts) {
   <section class="py-12 px-4 md:px-20">
     <Events posts={posts} limit={true} client:only="react" />
   </section>
-  <section
+  <!-- <section
     class="py-12 px-4 md:px-20 shadow-[inset_0_2px_4px_2px_rgb(0,0,0,0.05)] w-full bg-theme_text-light backdrop-filter backdrop-blur-xl bg-opacity-30"
   >
     <Officers
@@ -45,7 +45,7 @@ if (!posts) {
       currentTerm={currentTerm.current_term}
       client:only="react"
     />
-  </section>
+  </section> -->
   <section class="py-12 px-4 md:px-20">
     <div class="flex flex-col">
       <div class="text-5xl font-bold">
