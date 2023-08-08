@@ -19,6 +19,8 @@ export async function getStaticPaths() {
 type Params = InferGetStaticParamsType<typeof getStaticPaths>;
 const { slug } = Astro.params as Params;
 
+export const prerender = true;
+
 const post = await getPost(slug);
 const shareUrl = Astro.url.href;
 ---
