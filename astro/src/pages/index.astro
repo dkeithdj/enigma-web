@@ -42,7 +42,7 @@ export interface Props {
 const { seo } = Astro.props;
 ---
 
-<Layout seo={seo}>
+<Layout seo={{ ...seo }}>
   <Hero />
   <section class="py-12 px-4 md:px-20">
     <Events posts={posts} limit={true} client:only="react" />
