@@ -21,20 +21,18 @@ export const client = createClient({
   token: token,
   useCdn: false, // `false` if you want to ensure fresh data
   apiVersion: "2023-03-20", // date of setup
-  perspective: "published",
 });
+
+export async function getSiteSettings(): Promise<SiteSettingsProp> {
+  return await client
+    .fetch(groq`*[_type == "siteSettings" && _id == "siteSettings"][0]`)
+    .catch(console.error);
+}
 
 export async function getTerm(): Promise<{ current_term: string }> {
   return await client
     .fetch(groq`*[_type == "siteSettings"][0] {current_term}`)
     .catch(console.error);
-}
-
-export async function test(): Promise<{ current_term: string }> {
-  const response = await client
-    .fetch(groq`*[_type == "siteSettings"][0] {current_term}`)
-    .catch(console.error);
-  return response;
 }
 
 export async function getPosts(): Promise<PostProp[]> {
@@ -100,6 +98,17 @@ export async function getCommitteeByTerm(
       groq`*[_type == "committee" && current_term == "${curr_term}" && position.title match "Head"]`
     )
     .catch(console.error);
+}
+
+export interface SiteSettingsProp {
+  _createdAt: string;
+  _id: string;
+  _type: "siteSettings";
+  description: string;
+  ogImage: ImageAsset;
+  title: string;
+  url: string;
+  current_term: string;
 }
 
 export interface OfficerProp {

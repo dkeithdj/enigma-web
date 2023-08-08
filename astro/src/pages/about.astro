@@ -1,10 +1,21 @@
 ---
+import type { BaseHeadProps } from "@/components/BaseHead.astro";
 import LogoProcess from "@/components/LogoProcess";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import Layout from "@/layouts/Layout.astro";
+
+export interface Props {
+  seo?: BaseHeadProps;
+}
+
+const { seo } = Astro.props;
+const page_seo = {
+  ...seo,
+  title: "About",
+};
 ---
 
-<Layout title="About">
+<Layout seo={page_seo}>
   <section class="py-12 p-4 md:mx-20">
     <h1 class="text-5xl text-center pb-8">
       About: <span

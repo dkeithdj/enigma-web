@@ -1,4 +1,5 @@
 ---
+import type { BaseHeadProps } from "@/components/BaseHead.astro";
 import Events from "@/components/Events";
 import {
   Card,
@@ -12,9 +13,19 @@ import Layout from "@/layouts/Layout.astro";
 import { getPosts } from "@/utils/sanity/client";
 
 const posts = await getPosts();
+
+export interface Props {
+  seo?: BaseHeadProps;
+}
+
+const { seo } = Astro.props;
+const page_seo = {
+  ...seo,
+  title: "Events",
+};
 ---
 
-<Layout title="Events">
+<Layout seo={page_seo}>
   <section class="py-12 px-4 md:px-20">
     <Events posts={posts} client:load />
   </section>

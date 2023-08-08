@@ -13,6 +13,7 @@ import Events from "@/components/Events";
 import Officers from "@/components/Officers";
 import { Facebook, Mails } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
+import type { BaseHeadProps } from "@/components/BaseHead.astro";
 
 const posts = await getPosts();
 const currentTerm = await getTerm();
@@ -33,9 +34,19 @@ const committeeHeads = await getCommitteeByTerm(currentTerm.current_term);
 
 // const data = await response.json();
 // console.log(data.result);
+
+export interface Props {
+  seo?: BaseHeadProps;
+}
+
+const { seo } = Astro.props;
+const index = {
+  ...seo,
+  title: "Index",
+};
 ---
 
-<Layout title="Index">
+<Layout seo={seo}>
   <Hero />
   <section class="py-12 px-4 md:px-20">
     <Events posts={posts} limit={true} client:only="react" />

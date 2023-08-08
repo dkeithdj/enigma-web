@@ -1,24 +1,17 @@
 ---
-interface Props {
-  title: string;
-}
-
 import "@/styles/globals.css";
+import MainLayout from "./Base.astro";
+import type { BaseHeadProps } from "@/components/BaseHead.astro";
 import Footer from "@/components/Footer.astro";
-import { Separator } from "@/components/ui/separator";
 import Nav from "@/components/Nav";
-const { title } = Astro.props;
+
+export interface Props {
+  seo?: BaseHeadProps;
+}
+const { seo } = Astro.props;
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-  </head>
+<MainLayout seo={seo}>
   <body
     class="scrollbar-thin scrollbar-thumb-theme_primary/70 scrollbar-thumb-rounded-lg"
   >
@@ -32,4 +25,4 @@ const { title } = Astro.props;
       </div>
     </main>
   </body>
-</html>
+</MainLayout>

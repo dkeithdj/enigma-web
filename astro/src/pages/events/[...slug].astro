@@ -8,6 +8,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ChevronLeft, Copy } from "lucide-react";
 import EventHeader from "@/components/EventHeader";
 import { Separator } from "@/components/ui/separator";
+import type { BaseHeadProps } from "@/components/BaseHead.astro";
 
 export async function getStaticPaths() {
   const posts = await getPosts();
@@ -23,9 +24,19 @@ export const prerender = true;
 
 const post = await getPost(slug);
 const shareUrl = Astro.url.href;
+
+export interface Props {
+  seo?: BaseHeadProps;
+}
+
+const { seo } = Astro.props;
+const page_seo = {
+  ...seo,
+  title: post.title,
+};
 ---
 
-<Layout title={post.title!}>
+<Layout seo={page_seo}>
   <div class="relative w-full h-[150px]">
     <div
       class="absolute inset-0 bg-center bg-cover"
