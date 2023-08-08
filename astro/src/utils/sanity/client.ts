@@ -21,6 +21,7 @@ export const client = createClient({
   token: token,
   useCdn: false, // `false` if you want to ensure fresh data
   apiVersion: "2023-03-20", // date of setup
+  perspective: "published",
 });
 
 export async function getTerm(): Promise<{ current_term: string }> {
