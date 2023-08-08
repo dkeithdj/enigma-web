@@ -21,6 +21,13 @@ const currentTerm = await getTerm();
 const adviser = await getAdviserByTerm(currentTerm.current_term);
 const officers = await getOfficersByTerm(currentTerm.current_term);
 const committeeHeads = await getCommitteeByTerm(currentTerm.current_term);
+
+if (!posts) {
+  return new Response(null, {
+    status: 500,
+    statusText: "Error",
+  });
+}
 ---
 
 <Layout title="Index">
