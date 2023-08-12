@@ -19,11 +19,10 @@ import type { PostProp } from "@/utils/sanity/client";
 import { formatDate, imageUrlFor } from "@/utils/sanity";
 import { Avatar, AvatarImage, AvatarFallback } from "@radix-ui/react-avatar";
 import { getRelativeTime } from "@/utils/relativeTime";
+import { Badge } from "./ui/badge";
 
 const Events = ({ posts, limit }: { posts: PostProp[]; limit?: boolean }) => {
   const matches = useMediaQuery("(min-width: 768px)");
-
-  const aa = new Date("2023-08-03T10:50:19Z");
 
   const recentPost = posts.filter((_, index) => index === 0);
   const oldPosts = limit
@@ -69,6 +68,11 @@ const Events = ({ posts, limit }: { posts: PostProp[]; limit?: boolean }) => {
                 </div>
                 <CardHeader>
                   <CardTitle>{post.title}</CardTitle>
+                  <CardDescription>
+                    {post.categories.map((category) => (
+                      <Badge key={category._id}>{category.title}</Badge>
+                    ))}
+                  </CardDescription>
                 </CardHeader>
                 <div className="absolute bottom-2 right-2 text-sm font-semibold">
                   {getRelativeTime(post._createdAt)}
@@ -104,6 +108,11 @@ const Events = ({ posts, limit }: { posts: PostProp[]; limit?: boolean }) => {
                 </div>
                 <CardHeader>
                   <CardTitle>{post.title}</CardTitle>
+                  <CardDescription>
+                    {post.categories.map((category) => (
+                      <Badge key={category._id}>{category.title}</Badge>
+                    ))}
+                  </CardDescription>
                 </CardHeader>
                 <div className="absolute bottom-2 right-2 text-sm font-semibold">
                   {getRelativeTime(post._createdAt)}

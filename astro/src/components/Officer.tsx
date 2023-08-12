@@ -1,8 +1,9 @@
-import { motion } from "framer-motion";
+import { Variants, motion } from "framer-motion";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Badge } from "./ui/badge";
 import { Card, CardDescription, CardFooter, CardHeader } from "./ui/card";
 import { imageUrlFor } from "@/utils/sanity";
+import { useState } from "react";
 
 const Officer = ({
   first_name,
@@ -21,17 +22,9 @@ const Officer = ({
   term?: string;
   photo?: string;
 }) => {
+  const [scope, setScope] = useState();
   return (
-    <Card
-      key={last_name}
-      className="relative flex flex-col items-center w-[180px] h-[270px]"
-    >
-      {/* <motion.div className="absolute top-0 left-0" whileHover={{ y: 5 }}>
-        <Badge>{program}</Badge>
-      </motion.div>
-      <div className="absolute top-0 right-0">
-        <Badge>{year_level}</Badge>
-      </div> */}
+    <Card className="relative flex flex-col items-center w-[180px] h-[270px]">
       <CardHeader>
         <Avatar className="bg-red-200 w-32 h-32">
           <AvatarImage src={photo ? photo : "/enigma_Logo.svg"} />

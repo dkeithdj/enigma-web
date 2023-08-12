@@ -38,7 +38,15 @@ export async function getTerm(): Promise<{ current_term: string }> {
 export async function getPosts(): Promise<PostProp[]> {
   return await client
     .fetch(
-      groq`*[_type == "post" && defined(slug.current)] | order(_createdAt desc)`
+      groq`*[_type == "post" && defined(slug.current)] {
+        id,
+        _type,
+        _createdAt,
+        title,
+        slug,
+        mainImage,
+        categories[]->{_id,title}
+      } | order(_createdAt desc)`
     )
     .catch(console.error);
 }
@@ -56,7 +64,8 @@ export async function getPost(slug: string): Promise<PostProp> {
         author->{_id, name, slug, image, bio},
         slug,
         "mainImage": mainImage.asset->url,
-        body 
+        body,
+        categories[]->{_id,title} 
       }
     `,
       {
@@ -162,6 +171,7 @@ export interface PostProp {
   excerpt?: string;
   mainImage?: ImageAsset;
   body: PortableTextBlock[];
+  categories: { _id: string; title: string }[];
 }
 
 export interface Author {
