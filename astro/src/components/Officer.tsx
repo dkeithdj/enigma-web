@@ -3,8 +3,6 @@ import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Badge } from "./ui/badge";
 import { Card, CardDescription, CardFooter, CardHeader } from "./ui/card";
 import { imageUrlFor } from "@/utils/sanity";
-import { useState } from "react";
-import Committees from "./Committees";
 import type { CommitteeProp } from "@/utils/sanity/client";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
 
