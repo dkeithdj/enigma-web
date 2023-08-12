@@ -28,11 +28,7 @@ const Officer = ({
   isCommittee?: boolean;
 }) => {
   return (
-    <Card
-      className={`relative flex flex-col items-center w-[180px] h-[${
-        isCommittee ? 280 : 270
-      }px]`}
-    >
+    <Card className={`relative flex flex-col items-center w-[180px] h-[280px]`}>
       <CardHeader>
         <Avatar className="bg-red-200 w-32 h-32">
           <AvatarImage src={photo ? photo : "/enigma_Logo.svg"} />
