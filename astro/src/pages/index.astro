@@ -5,6 +5,7 @@ import Hero from "@/components/Hero.astro";
 import {
   getAdviserByTerm,
   getCommitteeByTerm,
+  getCommitteeHeadByTerm,
   getOfficersByTerm,
   getPosts,
   getTerm,
@@ -19,7 +20,8 @@ const posts = await getPosts();
 const currentTerm = await getTerm();
 const adviser = await getAdviserByTerm(currentTerm.current_term);
 const officers = await getOfficersByTerm(currentTerm.current_term);
-const committeeHeads = await getCommitteeByTerm(currentTerm.current_term);
+const committeeHeads = await getCommitteeHeadByTerm(currentTerm.current_term);
+const committees = await getCommitteeByTerm(currentTerm.current_term);
 
 export interface Props {
   seo?: BaseHeadProps;
@@ -41,6 +43,7 @@ const { seo } = Astro.props;
       officers={officers}
       committeeHeads={committeeHeads}
       currentTerm={currentTerm.current_term}
+      committees={committees}
       client:only="react"
     />
   </section>

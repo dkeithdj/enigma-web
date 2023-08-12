@@ -99,12 +99,22 @@ export async function getAdviserByTerm(
     .catch(console.error);
 }
 
-export async function getCommitteeByTerm(
+export async function getCommitteeHeadByTerm(
   curr_term: string
 ): Promise<CommitteeProp[]> {
   return await client
     .fetch(
       groq`*[_type == "committee" && current_term == "${curr_term}" && position.title match "Head"]`
+    )
+    .catch(console.error);
+}
+
+export async function getCommitteeByTerm(
+  curr_term: string
+): Promise<CommitteeProp[]> {
+  return await client
+    .fetch(
+      groq`*[_type == "committee" && current_term == "${curr_term}" && !(position.title match "Head")]`
     )
     .catch(console.error);
 }

@@ -13,11 +13,13 @@ const Officers = ({
   adviser,
   officers,
   committeeHeads,
+  committees,
   currentTerm,
 }: {
   adviser: AdviserProp;
   officers: OfficerProp[];
   committeeHeads: CommitteeProp[];
+  committees?: CommitteeProp[];
   currentTerm: string;
 }) => {
   return (
@@ -99,7 +101,6 @@ const Officers = ({
               viewport={{ once: true }}
             >
               <Officer
-                // key={committee._id}
                 first_name={committee.first_name}
                 last_name={committee.last_name}
                 position={committee.position.title}
@@ -107,6 +108,7 @@ const Officers = ({
                 year_level={committee.year_level}
                 term={committee.current_term}
                 photo={committee.image && imageUrlFor(committee.image).url()}
+                committees={committees}
               />
             </motion.div>
           ))}
