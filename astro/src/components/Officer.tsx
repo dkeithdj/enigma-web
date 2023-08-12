@@ -15,6 +15,7 @@ const Officer = ({
   term,
   photo,
   committees,
+  isCommittee,
 }: {
   first_name: string;
   last_name: string;
@@ -24,11 +25,12 @@ const Officer = ({
   term?: string;
   photo?: string;
   committees?: CommitteeProp[];
+  isCommittee?: boolean;
 }) => {
   return (
     <Card
       className={`relative flex flex-col items-center w-[180px] h-[${
-        committees ? 280 : 270
+        isCommittee ? 280 : 270
       }px]`}
     >
       <CardHeader>

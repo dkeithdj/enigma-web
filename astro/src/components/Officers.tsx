@@ -109,6 +109,7 @@ const Officers = ({
                 term={committee.current_term}
                 photo={committee.image && imageUrlFor(committee.image).url()}
                 committees={committees}
+                isCommittee={true}
               />
             </motion.div>
           ))}
