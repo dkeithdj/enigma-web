@@ -5,6 +5,7 @@ import { Card, CardDescription, CardFooter, CardHeader } from "./ui/card";
 import { imageUrlFor } from "@/utils/sanity";
 import type { CommitteeProp } from "@/utils/sanity/client";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
+import { Drawer } from "vaul";
 
 const Officer = ({
   first_name,
@@ -16,6 +17,7 @@ const Officer = ({
   photo,
   committees,
   isCommittee,
+  cardDimensions,
 }: {
   first_name: string;
   last_name: string;
@@ -26,9 +28,14 @@ const Officer = ({
   photo?: string;
   committees?: CommitteeProp[];
   isCommittee?: boolean;
+  cardDimensions?: { w: string; h: string };
 }) => {
   return (
-    <Card className={`relative flex flex-col items-center w-[180px] h-[280px]`}>
+    <Card
+      className={`relative flex flex-col items-center w-[${
+        cardDimensions ? cardDimensions.w : "180"
+      }px] h-[${cardDimensions ? cardDimensions.h : "270"}px]`}
+    >
       <CardHeader>
         <Avatar className="bg-red-200 w-32 h-32">
           <AvatarImage src={photo ? photo : "/enigma_Logo.svg"} />
@@ -68,65 +75,24 @@ const Officer = ({
                   committee.position.title == position?.split(" ")[0]
               )
               .map((committee) => (
-                <HoverCard key={committee._id}>
-                  <HoverCardTrigger asChild>
-                    <motion.div
-                      initial={{ translateY: 0 }}
-                      whileHover={{ translateY: -4 }}
-                      key={committee._id}
-                      className="hover:z-20 focus:z-20 touch-none"
-                      onClick={(event) => event.preventDefault()}
-                    >
-                      <Avatar>
-                        <AvatarImage
-                          src={
-                            committee.image &&
-                            imageUrlFor(committee.image).url()
-                          }
-                          alt={committee.first_name}
-                        />
-                        <AvatarFallback>
-                          {committee.first_name.charAt(0).toUpperCase()}
-                        </AvatarFallback>
-                      </Avatar>
-                    </motion.div>
-                  </HoverCardTrigger>
-                  <HoverCardContent className="w-auto">
-                    <div className="flex items-center space-x-1">
-                      <Avatar className="w-20 h-20">
-                        <AvatarImage
-                          src={
-                            committee.image &&
-                            imageUrlFor(committee.image).url()
-                          }
-                          alt={committee.first_name}
-                        />
-                        <AvatarFallback>
-                          {committee.first_name.charAt(0).toUpperCase()}
-                        </AvatarFallback>
-                      </Avatar>
-                      <div className="space-y-1">
-                        <div className="flex justify-start items-center gap-1">
-                          <Badge className="bg-theme_primary hover:bg-theme_accent-light">
-                            {committee.program}
-                          </Badge>
-                          <Badge className="bg-theme_accent-light hover:bg-theme_primary whitespace-nowrap">
-                            {committee.year_level} Year
-                          </Badge>
-                        </div>
-                        <div className="text-sm text-left text-black">
-                          {committee.first_name}{" "}
-                          <span className="font-semibold">
-                            {committee.last_name}
-                          </span>
-                        </div>
-                        <div className="text-xs text-left text-gray-400 whitespace-nowrap">
-                          {committee.position.title} Committee
-                        </div>
-                      </div>
-                    </div>
-                  </HoverCardContent>
-                </HoverCard>
+                <motion.div
+                  initial={{ translateY: 0 }}
+                  whileHover={{ translateY: -4 }}
+                  key={committee._id}
+                  className="hover:z-20 focus:z-20"
+                >
+                  <Avatar>
+                    <AvatarImage
+                      src={
+                        committee.image && imageUrlFor(committee.image).url()
+                      }
+                      alt={committee.first_name}
+                    />
+                    <AvatarFallback>
+                      {committee.first_name.charAt(0).toUpperCase()}
+                    </AvatarFallback>
+                  </Avatar>
+                </motion.div>
               ))}
           </div>
         )}
