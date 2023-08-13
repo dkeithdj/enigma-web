@@ -74,7 +74,8 @@ const Officer = ({
                       initial={{ translateY: 0 }}
                       whileHover={{ translateY: -4 }}
                       key={committee._id}
-                      className="hover:z-20 focus:z-20"
+                      className="hover:z-20 focus:z-20 touch-none"
+                      onClick={(event) => event.preventDefault()}
                     >
                       <Avatar>
                         <AvatarImage

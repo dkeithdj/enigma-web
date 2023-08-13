@@ -13,7 +13,7 @@ const EventHeader = ({ post, url }: { post: PostProp; url: string }) => {
     setTimeout(() => setCopied(""), 3000);
   };
   return (
-    <div className="not-prose  ">
+    <>
       <h1 className="text-4xl font-bold gap-4 inline-flex items-baseline">
         {post.title}
         <span onClick={handleCopy}>
@@ -26,7 +26,7 @@ const EventHeader = ({ post, url }: { post: PostProp; url: string }) => {
       </h1>
       {post.author && (
         <div className="flex gap-4 items-center py-2">
-          <Avatar className="h-14 w-auto">
+          <Avatar className="h-14 w-14">
             <AvatarImage
               src={
                 post.author.image
@@ -44,7 +44,7 @@ const EventHeader = ({ post, url }: { post: PostProp; url: string }) => {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 };
 

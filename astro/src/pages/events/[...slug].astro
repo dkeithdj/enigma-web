@@ -61,8 +61,8 @@ const page_seo = {
             <span class="text-lg">Go Back</span>
           </div>
         </a>
+        <EventHeader post={post} url={shareUrl} client:load />
       </div>
-      <EventHeader post={post} url={shareUrl} client:load />
       <Separator className="h-0.5 rounded-full" />
       <PortableText value={post.body} />
     </div>
