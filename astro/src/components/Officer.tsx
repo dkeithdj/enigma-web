@@ -108,10 +108,10 @@ const Officer = ({
                       <div className="space-y-1">
                         <div className="flex justify-start items-center gap-1">
                           <Badge className="bg-theme_primary hover:bg-theme_accent-light">
-                            {program}
+                            {committee.program}
                           </Badge>
                           <Badge className="bg-theme_accent-light hover:bg-theme_primary whitespace-nowrap">
-                            {year_level} Year
+                            {committee.year_level} Year
                           </Badge>
                         </div>
                         <div className="text-sm text-left text-black">
