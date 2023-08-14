@@ -4,8 +4,6 @@ import { Badge } from "./ui/badge";
 import { Card, CardDescription, CardFooter, CardHeader } from "./ui/card";
 import { imageUrlFor } from "@/utils/sanity";
 import type { CommitteeProp } from "@/utils/sanity/client";
-import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
-import { Drawer } from "vaul";
 
 const Officer = ({
   first_name,
@@ -31,7 +29,7 @@ const Officer = ({
   cardHeight?: string;
 }) => {
   return (
-    <Card className={`w-[180px] h-[${cardHeight ? cardHeight : "270"}px]`}>
+    <Card className={`w-[180px] h-[270px]`}>
       <CardHeader>
         <Avatar className="bg-red-200 w-32 h-32">
           <AvatarImage src={photo ? photo : "/enigma_Logo.svg"} />
@@ -77,7 +75,7 @@ const Officer = ({
                   key={committee._id}
                   className="hover:z-20 focus:z-20"
                 >
-                  <Avatar>
+                  <Avatar className="w-8 h-8">
                     <AvatarImage
                       src={
                         committee.image && imageUrlFor(committee.image).url()

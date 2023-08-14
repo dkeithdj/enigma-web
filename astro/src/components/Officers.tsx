@@ -7,7 +7,7 @@ import type {
 import { imageUrlFor } from "@/utils/sanity";
 import Officer from "./Officer";
 import { motion } from "framer-motion";
-import { Drawer } from "vaul";
+import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "./ui/sheet";
 
 const Officers = ({
   adviser,
@@ -23,7 +23,6 @@ const Officers = ({
   currentTerm: string;
 }) => {
   const [width, setWidth] = useState(0);
-  const [open, setOpen] = useState(false);
   const carousel = useRef(null);
 
   return (
@@ -92,11 +91,11 @@ const Officers = ({
       </div>
       <div className="flex justify-center gap-2 flex-wrap">
         {committeeHeads &&
-          committeeHeads.map((committee, i) => (
-            <Drawer.Root dismissible={false} open={open}>
-              <Drawer.Trigger asChild onClick={() => setOpen(true)}>
+          committeeHeads.map((committeeHead, i) => (
+            <Sheet>
+              <SheetTrigger asChild>
                 <motion.div
-                  key={committee._id}
+                  key={committeeHead._id}
                   initial={{ opacity: 0, translateX: -50, translateY: -50 }}
                   whileInView={{
                     opacity: 1,
@@ -107,72 +106,64 @@ const Officers = ({
                   viewport={{ once: true }}
                 >
                   <Officer
-                    first_name={committee.first_name}
-                    last_name={committee.last_name}
-                    position={committee.position.title}
-                    program={committee.program}
-                    year_level={committee.year_level}
-                    term={committee.current_term}
+                    first_name={committeeHead.first_name}
+                    last_name={committeeHead.last_name}
+                    position={committeeHead.position.title}
+                    program={committeeHead.program}
+                    year_level={committeeHead.year_level}
+                    term={committeeHead.current_term}
                     photo={
-                      committee.image && imageUrlFor(committee.image).url()
+                      committeeHead.image &&
+                      imageUrlFor(committeeHead.image).url()
                     }
                     cardHeight={"280"}
                     committees={committees}
                     isCommittee={true}
                   />
                 </motion.div>
-              </Drawer.Trigger>
-              <Drawer.Portal>
-                <Drawer.Overlay className="fixed inset-0 bg-black/40" />
-                //TODO: Fix distribution
-                <Drawer.Content
-                  className="bg-zinc-100 flex flex-col rounded-t-[10px] mt-24 fixed bottom-0 left-0 right-0 focus:outline-none"
-                  onClick={() =>
-                    setWidth(
-                      carousel.current.scrollWidth -
-                        carousel.current.offsetWidth
-                    )
-                  }
-                >
-                  <button onClick={() => setOpen(false)}>close</button>
-                  <div className="p-4 bg-white rounded-t-[10px] flex-1">
-                    <div className="mx-auto w-12 h-1.5 flex-shrink-0 rounded-full bg-zinc-300 mb-8" />
-
-                    <Drawer.Title className="font-medium mb-4">
-                      {committee.position.title.split(" ")[0]}
-                    </Drawer.Title>
-                    <motion.div className="" ref={carousel}>
-                      <motion.div
-                        drag="x"
-                        dragConstraints={{ right: 0, left: -width }}
-                        className="flex justify-center gap-2"
-                      >
-                        {committees
-                          ?.filter(
-                            (personnel) =>
-                              personnel.position.title ==
-                              committee.position.title.split(" ")[0]
-                          )
-                          .map((personnel) => (
-                            <Officer
-                              first_name={personnel.first_name}
-                              last_name={personnel.last_name}
-                              position={personnel.position.title}
-                              program={personnel.program}
-                              year_level={personnel.year_level}
-                              term={personnel.current_term}
-                              photo={
-                                personnel.image &&
-                                imageUrlFor(personnel.image).url()
-                              }
-                            />
-                          ))}
-                      </motion.div>
-                    </motion.div>
-                  </div>
-                </Drawer.Content>
-              </Drawer.Portal>
-            </Drawer.Root>
+              </SheetTrigger>
+              <SheetContent
+                side={"bottom"}
+                className="bg-zinc-100 flex flex-col rounded-t-[10px] mt-24 fixed bottom-0 left-0 right-0 focus:outline-none"
+                onClick={() =>
+                  setWidth(
+                    carousel.current.scrollWidth - carousel.current.offsetWidth
+                  )
+                }
+              >
+                <SheetHeader className="font-semibold text-lg">
+                  {committeeHead.position.title.split(" ")[0]} Committee
+                </SheetHeader>
+                <motion.div className="" ref={carousel}>
+                  <motion.div
+                    drag="x"
+                    dragConstraints={{ right: 0, left: -width }}
+                    className="flex justify-center gap-2"
+                  >
+                    {committees
+                      ?.filter(
+                        (personnel) =>
+                          personnel.position.title ==
+                          committeeHead.position.title.split(" ")[0]
+                      )
+                      .map((personnel) => (
+                        <Officer
+                          first_name={personnel.first_name}
+                          last_name={personnel.last_name}
+                          position={personnel.position.title}
+                          program={personnel.program}
+                          year_level={personnel.year_level}
+                          term={personnel.current_term}
+                          photo={
+                            personnel.image &&
+                            imageUrlFor(personnel.image).url()
+                          }
+                        />
+                      ))}
+                  </motion.div>
+                </motion.div>
+              </SheetContent>
+            </Sheet>
           ))}
       </div>
     </>
