@@ -17,7 +17,7 @@ const Officer = ({
   photo,
   committees,
   isCommittee,
-  cardDimensions,
+  cardHeight,
 }: {
   first_name: string;
   last_name: string;
@@ -28,13 +28,13 @@ const Officer = ({
   photo?: string;
   committees?: CommitteeProp[];
   isCommittee?: boolean;
-  cardDimensions?: { w: string; h: string };
+  cardHeight?: string;
 }) => {
   return (
     <Card
-      className={`relative flex flex-col items-center w-[${
-        cardDimensions ? cardDimensions.w : "180"
-      }px] h-[${cardDimensions ? cardDimensions.h : "270"}px]`}
+      className={`relative flex flex-col items-center w-[180px] h-[${
+        cardHeight ? cardHeight : "270"
+      }px]`}
     >
       <CardHeader>
         <Avatar className="bg-red-200 w-32 h-32">

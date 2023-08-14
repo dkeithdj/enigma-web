@@ -26,13 +26,14 @@ const EventHeader = ({ post, url }: { post: PostProp; url: string }) => {
       </h1>
       {post.author && (
         <div className="flex gap-4 items-center py-2">
-          <Avatar className="h-14 w-14">
+          <Avatar className="w-14 h-14">
             <AvatarImage
               src={
                 post.author.image
                   ? imageUrlFor(post.author.image).url()
                   : "/enigma_Logo.svg"
               }
+              className="w-14 h-14"
             />
             <AvatarFallback>E</AvatarFallback>
           </Avatar>

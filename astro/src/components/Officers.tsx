@@ -1,5 +1,4 @@
-import { officers } from "@/utils/constants";
-import React, { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import type {
   AdviserProp,
   CommitteeProp,
@@ -7,10 +6,8 @@ import type {
 } from "@/utils/sanity/client";
 import { imageUrlFor } from "@/utils/sanity";
 import Officer from "./Officer";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { Drawer } from "vaul";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { Badge } from "./ui/badge";
 
 const Officers = ({
   adviser,
@@ -26,6 +23,7 @@ const Officers = ({
   currentTerm: string;
 }) => {
   const [width, setWidth] = useState(0);
+  const [open, setOpen] = useState(false);
   const carousel = useRef(null);
 
   return (
@@ -95,8 +93,8 @@ const Officers = ({
       <div className="flex justify-center gap-2 flex-wrap">
         {committeeHeads &&
           committeeHeads.map((committee, i) => (
-            <Drawer.Root>
-              <Drawer.Trigger asChild>
+            <Drawer.Root dismissible={false} open={open}>
+              <Drawer.Trigger asChild onClick={() => setOpen(true)}>
                 <motion.div
                   key={committee._id}
                   initial={{ opacity: 0, translateX: -50, translateY: -50 }}
@@ -118,7 +116,7 @@ const Officers = ({
                     photo={
                       committee.image && imageUrlFor(committee.image).url()
                     }
-                    cardDimensions={{ w: "180", h: "280" }}
+                    cardHeight={"280"}
                     committees={committees}
                     isCommittee={true}
                   />
@@ -126,8 +124,9 @@ const Officers = ({
               </Drawer.Trigger>
               <Drawer.Portal>
                 <Drawer.Overlay className="fixed inset-0 bg-black/40" />
+                //TODO: Fix distribution
                 <Drawer.Content
-                  className="bg-zinc-100 flex flex-col rounded-t-[10px] mt-24 fixed bottom-0 left-0 right-0"
+                  className="bg-zinc-100 flex flex-col rounded-t-[10px] mt-24 fixed bottom-0 left-0 right-0 focus:outline-none"
                   onClick={() =>
                     setWidth(
                       carousel.current.scrollWidth -
@@ -135,6 +134,7 @@ const Officers = ({
                     )
                   }
                 >
+                  <button onClick={() => setOpen(false)}>close</button>
                   <div className="p-4 bg-white rounded-t-[10px] flex-1">
                     <div className="mx-auto w-12 h-1.5 flex-shrink-0 rounded-full bg-zinc-300 mb-8" />
 
@@ -145,7 +145,7 @@ const Officers = ({
                       <motion.div
                         drag="x"
                         dragConstraints={{ right: 0, left: -width }}
-                        className="flex justify-center gap-2 pb-12 "
+                        className="flex justify-center gap-2"
                       >
                         {committees
                           ?.filter(
@@ -165,7 +165,6 @@ const Officers = ({
                                 personnel.image &&
                                 imageUrlFor(personnel.image).url()
                               }
-                              cardDimensions={{ w: "150", h: "260" }}
                             />
                           ))}
                       </motion.div>
