@@ -31,11 +31,7 @@ const Officer = ({
   cardHeight?: string;
 }) => {
   return (
-    <Card
-      className={`relative flex flex-col items-center w-[180px] h-[${
-        cardHeight ? cardHeight : "270"
-      }px]`}
-    >
+    <Card className={`w-[180px] h-[${cardHeight ? cardHeight : "270"}px]`}>
       <CardHeader>
         <Avatar className="bg-red-200 w-32 h-32">
           <AvatarImage src={photo ? photo : "/enigma_Logo.svg"} />
