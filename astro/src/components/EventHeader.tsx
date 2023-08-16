@@ -14,15 +14,20 @@ const EventHeader = ({ post, url }: { post: PostProp; url: string }) => {
   };
   return (
     <>
-      <h1 className="text-4xl font-bold gap-4 inline-flex items-baseline">
-        {post.title}
-        <span onClick={handleCopy}>
-          {copied === url ? (
-            <CopyCheck width={30} height={30} color="gray" />
-          ) : (
-            <Copy width={30} height={30} />
-          )}
-        </span>
+      <h1 className="text-4xl font-bold gap-4 ">
+        <p>
+          {post.title}
+          <span
+            onClick={handleCopy}
+            className="pl-3 inline-flex items-baseline"
+          >
+            {copied === url ? (
+              <CopyCheck width={30} height={30} color="gray" />
+            ) : (
+              <Copy width={30} height={30} />
+            )}
+          </span>
+        </p>
       </h1>
       {post.author && (
         <div className="flex gap-4 items-center py-2">

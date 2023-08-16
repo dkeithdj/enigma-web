@@ -4,6 +4,7 @@ import MainLayout from "./Base.astro";
 import type { BaseHeadProps } from "@/components/BaseHead.astro";
 import Footer from "@/components/Footer.astro";
 import Nav from "@/components/Nav";
+import Announcement from "@/components/Announcement";
 
 export interface Props {
   seo?: BaseHeadProps;
@@ -19,6 +20,7 @@ const { seo } = Astro.props;
     <div class="main"></div>
     <main class="font-poppins relative">
       <div class="flex flex-col min-h-screen">
+        <Announcement client:load />
         <Nav client:load />
         <slot />
         <Footer />

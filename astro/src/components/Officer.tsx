@@ -4,6 +4,7 @@ import { Badge } from "./ui/badge";
 import { Card, CardDescription, CardFooter, CardHeader } from "./ui/card";
 import { imageUrlFor } from "@/utils/sanity";
 import type { CommitteeProp } from "@/utils/sanity/client";
+import { ExternalLink } from "lucide-react";
 
 const Officer = ({
   first_name,
@@ -14,8 +15,6 @@ const Officer = ({
   term,
   photo,
   committees,
-  isCommittee,
-  cardHeight,
 }: {
   first_name: string;
   last_name: string;
@@ -25,13 +24,16 @@ const Officer = ({
   term?: string;
   photo?: string;
   committees?: CommitteeProp[];
-  isCommittee?: boolean;
-  cardHeight?: string;
 }) => {
   return (
-    <Card className={`w-[180px] h-[270px]`}>
+    <Card className={`relative group w-[180px] h-[270px]`}>
+      {committees && (
+        <div className="absolute top-2 right-2 md:hidden group-hover:block">
+          <ExternalLink color="gray" />
+        </div>
+      )}
       <CardHeader>
-        <Avatar className="bg-red-200 w-32 h-32">
+        <Avatar className="w-32 h-32">
           <AvatarImage src={photo ? photo : "/enigma_Logo.svg"} />
           <AvatarFallback>{first_name.charAt(0).toUpperCase()}</AvatarFallback>
         </Avatar>
@@ -39,16 +41,16 @@ const Officer = ({
       <CardDescription>
         {program ? (
           <div className="flex justify-center items-center gap-1">
-            <Badge className="bg-theme_primary hover:bg-theme_accent-light">
+            <Badge className="bg-theme_primary pointer-events-none">
               {program}
             </Badge>
-            <Badge className="bg-theme_accent-light hover:bg-theme_primary whitespace-nowrap">
+            <Badge className="bg-theme_accent-light pointer-events-none whitespace-nowrap">
               {year_level} Year
             </Badge>
           </div>
         ) : (
           <div className="flex justify-center items-center gap-1">
-            <Badge className="bg-theme_primary hover:bg-theme_accent-light">
+            <Badge className="bg-theme_primary pointer-events-none">
               Professor
             </Badge>
           </div>

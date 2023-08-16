@@ -35,10 +35,15 @@ export async function getTerm(): Promise<{ current_term: string }> {
     .catch(console.error);
 }
 
-export async function getPosts(): Promise<PostProp[]> {
+export async function getPosts(
+  from?: number,
+  to?: number
+): Promise<PostProp[]> {
   return await client
     .fetch(
-      groq`*[_type == "post" && defined(slug.current)] {
+      groq`*[_type == "post" && defined(slug.current) && !(_id in path("drafts.**"))]${
+        from ? '["'.concat(from.toString(), "...", to!.toString(), '"]') : []
+      } {
         id,
         _type,
         _createdAt,

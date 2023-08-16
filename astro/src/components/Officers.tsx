@@ -116,9 +116,7 @@ const Officers = ({
                       committeeHead.image &&
                       imageUrlFor(committeeHead.image).url()
                     }
-                    cardHeight={"280"}
                     committees={committees}
-                    isCommittee={true}
                   />
                 </motion.div>
               </SheetTrigger>
