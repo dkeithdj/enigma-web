@@ -11,7 +11,7 @@ import { Separator } from "@/components/ui/separator";
 import type { BaseHeadProps } from "@/components/BaseHead.astro";
 
 export async function getStaticPaths() {
-  const posts = await getPosts();
+  const posts = await getPosts({});
   return posts.map((post) => ({
     params: { slug: post.slug.current },
   }));

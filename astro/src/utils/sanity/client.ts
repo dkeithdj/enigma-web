@@ -36,14 +36,20 @@ export async function getTerm(): Promise<{ current_term: string }> {
 }
 
 export async function getPosts(
-  from?: number,
-  to?: number
+  { from, to }: { from?: number; to?: number },
+  filterCategories?: string
 ): Promise<PostProp[]> {
+  console.log(from, to);
+  const limit = from !== undefined ? `[${from}...${to}]` : "[]";
+  console.log(limit);
+  const filter = filterCategories
+    ? `&& count((categories[]->title)[@ in ${filterCategories}]) > 0`
+    : "";
   return await client
     .fetch(
-      groq`*[_type == "post" && defined(slug.current) && !(_id in path("drafts.**"))]${
-        from ? '["'.concat(from.toString(), "...", to!.toString(), '"]') : []
-      } {
+      groq`*[_type == "post" && defined(slug.current) && !(_id in path("drafts.**")) ${filter}]
+      ${limit}
+       {
         id,
         _type,
         _createdAt,

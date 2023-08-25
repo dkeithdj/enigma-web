@@ -16,7 +16,7 @@ import { Facebook, Mails } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import type { BaseHeadProps } from "@/components/BaseHead.astro";
 
-const posts = await getPosts(0, 4);
+const posts = await getPosts({ from: 0, to: 4 });
 const currentTerm = await getTerm();
 const adviser = await getAdviserByTerm(currentTerm.current_term);
 const officers = await getOfficersByTerm(currentTerm.current_term);
