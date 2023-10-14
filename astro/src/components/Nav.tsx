@@ -28,7 +28,7 @@ const Nav = () => {
     <nav className="sticky top-0 z-20">
       <div className="flex items-center justify-between bg-theme_text-light backdrop-filter backdrop-blur-xl bg-opacity-60 border-b-2 px-4 md:px-20">
         <a href="/" className="pt-2">
-          <img src="/enigma_Horizontal.svg" alt="enigma" width="150" />
+          <img src="/assets/enigma_Horizontal.svg" alt="enigma" width="150" />
         </a>
 
         {matches && (

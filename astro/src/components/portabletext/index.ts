@@ -1,1 +1,1 @@
-export { default as PortableText } from "./PortableText.astro";
+export { default as PortableText } from "./PortableTextComponent.astro";

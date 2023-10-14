@@ -34,7 +34,7 @@ const Officer = ({
       </div> */}
       <CardHeader>
         <Avatar className="bg-red-200 w-32 h-32">
-          <AvatarImage src={photo ? photo : "/enigma_Logo.svg"} />
+          <AvatarImage src={photo ? photo : "/assets/enigma_Logo.svg"} />
           <AvatarFallback>E</AvatarFallback>
         </Avatar>
       </CardHeader>

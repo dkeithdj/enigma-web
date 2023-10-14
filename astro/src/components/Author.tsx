@@ -13,7 +13,7 @@ const Author = ({ post }: { post: Post }) => {
             src={
               post.author.image
                 ? imageUrlFor(post.author.image).url()
-                : "/enigma_Logo.svg"
+                : "/assets/enigma_Logo.svg"
             }
           />
           <AvatarFallback>E</AvatarFallback>
