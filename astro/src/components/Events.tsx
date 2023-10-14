@@ -93,7 +93,7 @@ const Events = ({ posts, limit }: { posts: Post[]; limit?: boolean }) => {
                 backgroundImage: `url('${
                   post.mainImage
                     ? imageUrlFor(post.mainImage).url()
-                    : "/enigma_Logo.svg"
+                    : "/assets/enigma_Logo.svg"
                 }')`,
               }}
             ></div>
