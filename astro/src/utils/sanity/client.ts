@@ -24,7 +24,16 @@ export async function getTerm(): Promise<{ current_term: string }> {
 
 export async function getPosts(): Promise<Post[]> {
   return await client.fetch(
-    groq`*[_type == "post" && defined(slug.current)] | order(_createdAt desc)`
+    groq`*[_type == "post" && defined(slug.current)]{
+        _id,
+        _type,
+        _createdAt,
+        title,
+        author->{_id, name, slug, "image": image.asset->url, bio},
+        slug,
+        "mainImage": mainImage.asset->url,
+        body 
+    } | order(_createdAt desc)`
   );
 }
 
@@ -37,7 +46,7 @@ export async function getPost(slug: string): Promise<Post> {
         _type,
         _createdAt,
         title,
-        author->{_id, name, slug, image, bio},
+        author->{_id, name, slug, "image": image.asset->url, bio},
         slug,
         "mainImage": mainImage.asset->url,
         body 
@@ -51,19 +60,49 @@ export async function getPost(slug: string): Promise<Post> {
 
 export async function getOfficers(): Promise<Officer[]> {
   return await client.fetch(
-    groq`*[_type == "officer"] | order(position.hierarchy asc)`
+    groq`*[_type == "officer"]{
+      _id,
+      _type,
+      current_term,
+      first_name,
+      last_name,
+      "image": image.asset->url,
+      position,
+      program,
+      year_level
+    } | order(position.hierarchy asc)`
   );
 }
 
 export async function getOfficersByTerm(curr_term: string): Promise<Officer[]> {
   return await client.fetch(
-    groq`*[_type == "officer" && current_term == "${curr_term}"] | order(position.hierarchy asc)`
+    groq`*[_type == "officer" && current_term == "${curr_term}"]{
+      _id,
+      _type,
+      current_term,
+      first_name,
+      last_name,
+      "image": image.asset->url,
+      position,
+      program,
+      year_level
+    } | order(position.hierarchy asc)`
   );
 }
 
 export async function getAdviserByTerm(curr_term: string): Promise<Adviser> {
   return await client.fetch(
-    groq`*[_type == "adviser" && current_term == "${curr_term}"][0]`
+    groq`*[_type == "adviser" && current_term == "${curr_term}"][0] {
+      _id,
+      _type,
+      current_term,
+      first_name,
+      last_name,
+      "image": image.asset->url,
+      position,
+      program,
+      year_level
+    }`
   );
 }
 
@@ -71,7 +110,17 @@ export async function getCommitteeByTerm(
   curr_term: string
 ): Promise<Officer[]> {
   return await client.fetch(
-    groq`*[_type == "committee" && current_term == "${curr_term}" && position.title match "Head"]`
+    groq`*[_type == "committee" && current_term == "${curr_term}" && position.title match "Head"]{
+      _id,
+      _type,
+      current_term,
+      first_name,
+      last_name,
+      "image": image.asset->url,
+      position,
+      program,
+      year_level
+    }`
   );
 }
 

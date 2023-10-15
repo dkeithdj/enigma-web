@@ -11,9 +11,7 @@ const Author = ({ post }: { post: Post }) => {
         <Avatar className="h-14 w-auto">
           <AvatarImage
             src={
-              post.author.image
-                ? imageUrlFor(post.author.image).url()
-                : "/assets/enigma_Logo.svg"
+              post.author.image ? post.author.image : "/assets/enigma_Logo.svg"
             }
           />
           <AvatarFallback>E</AvatarFallback>

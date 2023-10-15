@@ -20,3 +20,11 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+# vite-pwa
+dev-dist/
+
+.vscode/*
+.vscode/extensions.json
+.idea
+.DS_Store

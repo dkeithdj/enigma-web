@@ -12,13 +12,15 @@ import {
 } from "@/utils/sanity/client";
 import { imageUrlFor } from "@/utils/sanity";
 import Events from "@/components/Events";
+import { Picture } from "astro:assets";
 
 const posts = await getPosts();
 const getCurrTerm = await getTerm();
 const fetchAdviser = await getAdviserByTerm(getCurrTerm.current_term);
 const fetchOfficers = await getOfficersByTerm(getCurrTerm.current_term);
 const fetchCommitteeHeads = await getCommitteeByTerm(getCurrTerm.current_term);
-console.log(fetchAdviser);
+// console.log(posts);
+// console.log(fetchAdviser);
 // console.log(fetchOfficers);
 ---
 
@@ -43,7 +45,7 @@ console.log(fetchAdviser);
         last_name={fetchAdviser.last_name}
         position={fetchAdviser.position.title}
         term={fetchAdviser.current_term}
-        photo={fetchAdviser.image && imageUrlFor(fetchAdviser.image).url()}
+        photo={fetchAdviser.image}
         client:load
       />
     </div>
@@ -61,7 +63,7 @@ console.log(fetchAdviser);
             program={officer.program}
             year_level={officer.year_level}
             term={officer.current_term}
-            photo={officer.image && imageUrlFor(officer.image).url()}
+            photo={officer.image}
             client:load
           />
         ))
@@ -81,7 +83,7 @@ console.log(fetchAdviser);
             program={committee.program}
             year_level={committee.year_level}
             term={committee.current_term}
-            photo={committee.image && imageUrlFor(committee.image).url()}
+            photo={committee.image}
             client:load
           />
         ))

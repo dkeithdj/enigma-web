@@ -9,7 +9,9 @@ export interface Props {
 }
 
 const { asset, alt } = Astro.props;
-const image = imageUrlFor(asset);
+const image = imageUrlFor(asset).url();
+console.log(asset);
+console.log(image);
 ---
 
 <div class="flex items-center">

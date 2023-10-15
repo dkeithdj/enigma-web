@@ -21,10 +21,6 @@ import { Avatar, AvatarImage, AvatarFallback } from "@radix-ui/react-avatar";
 import { getRelativeTime } from "@/utils/relativeTime";
 
 const Events = ({ posts, limit }: { posts: Post[]; limit?: boolean }) => {
-  const matches = useMediaQuery("(min-width: 768px)");
-
-  const aa = new Date("2023-08-03T10:50:19Z");
-
   const recentPost = posts.filter((_, index) => index === 0);
   const oldPosts = limit
     ? posts.filter((_, index) => index >= 1 && index <= 3)
@@ -47,18 +43,11 @@ const Events = ({ posts, limit }: { posts: Post[]; limit?: boolean }) => {
       </div>
       <div className="relative flex gap-2">
         {recentPost.map((post) => (
-          <motion.div
-            key={post._id}
-            whileHover={{ scale: 1.01 }}
-            whileTap={{ scale: 0.95 }}
-            className="relative flex-grow h-48"
-          >
+          <div key={post._id} className="relative flex-grow h-48">
             <div
               className="absolute inset-0 bg-center bg-cover rounded-lg"
               style={{
-                backgroundImage: `url('${
-                  post.mainImage && imageUrlFor(post.mainImage).url()
-                }')`,
+                backgroundImage: `url('${post.mainImage}')`,
               }}
             ></div>
             <div className="absolute inset-0 bg-gradient-to-tl from-transparent to-white rounded-lg"></div>
@@ -76,24 +65,17 @@ const Events = ({ posts, limit }: { posts: Post[]; limit?: boolean }) => {
                 </div>
               </Card>
             </a>
-          </motion.div>
+          </div>
         ))}
       </div>
       <div className="pt-1.5 flex flex-col md:flex-row md:flex-wrap justify-between gap-y-1.5">
         {oldPosts.map((post) => (
-          <motion.div
-            key={post._id}
-            whileHover={{ scale: 1.01 }}
-            whileTap={{ scale: 0.95 }}
-            className="relative h-[200px] md:w-[33%]"
-          >
+          <div key={post._id} className="relative h-[200px] md:w-[33%]">
             <div
               className="absolute inset-0 bg-center bg-cover rounded-lg"
               style={{
                 backgroundImage: `url('${
-                  post.mainImage
-                    ? imageUrlFor(post.mainImage).url()
-                    : "/assets/enigma_Logo.svg"
+                  post.mainImage ? post.mainImage : "/assets/enigma_Logo.svg"
                 }')`,
               }}
             ></div>
@@ -112,7 +94,7 @@ const Events = ({ posts, limit }: { posts: Post[]; limit?: boolean }) => {
                 </div>
               </Card>
             </a>
-          </motion.div>
+          </div>
         ))}
       </div>
     </>
