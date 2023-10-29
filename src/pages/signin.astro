@@ -1,0 +1,10 @@
+---
+import LoginCard from "@/components/LoginCard";
+import Layout from "@/layouts/LoginLayout.astro";
+---
+
+<Layout title="Sign in">
+  <div class="flex justify-center items-center h-[75vh] mx-4">
+    <LoginCard client:load />
+  </div>
+</Layout>

@@ -1,0 +1,46 @@
+---
+export const prerender = true;
+import Layout from "@/layouts/Layout.astro";
+// import { getPost, getPosts } from "@/utils/sanity/client";
+import type { InferGetStaticParamsType } from "astro";
+// import { PortableText } from "../../components/portabletext";
+// import { formatDate, imageUrlFor } from "@/utils/sanity";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+// import Author from "@/components/Author";
+
+export function getStaticPaths() {
+  const posts = [{ slug: "test" }];
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+  }));
+}
+
+type Params = InferGetStaticParamsType<typeof getStaticPaths>;
+const { slug } = Astro.params as Params;
+---
+
+<Layout title={"Event Slug"}>
+  <div class="relative w-full h-[150px]">
+    <!-- <div
+      class="absolute inset-0 bg-center bg-cover"
+      style={{
+        backgroundImage: `url(${post.mainImage}`,
+      }}
+    >
+    </div> -->
+    <div class="absolute inset-0 bg-gradient-to-t from-white to-transparent">
+    </div>
+    <div class="absolute inset-0 bg-white bg-opacity-50"></div>
+  </div>
+  <article class="max-w-5xl mx-auto">
+    <div class="mt-6 mx-auto prose">
+      <div class="not-prose">
+        <h1 class="text-4xl font-bold">
+          <!-- {post.title} -->
+        </h1>
+        <!-- {post.author && <Author {post} client:load />} -->
+      </div>
+      <!-- <PortableText value={post.body} /> -->
+    </div>
+  </article>
+</Layout>
