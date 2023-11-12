@@ -1,6 +1,18 @@
 ---
 import LoginCard from "@/components/LoginCard";
+import { auth } from "@/firebase/server";
 import Layout from "@/layouts/LoginLayout.astro";
+
+/* Check current session */
+// if (Astro.cookies.has("session")) {
+//   const sessionCookie = Astro.cookies.get("session").value;
+//   const decodedCookie = await auth.verifySessionCookie(sessionCookie);
+//   const user = await auth.getUser(decodedCookie.uid);
+
+//   if (user) {
+//     return Astro.redirect("/");
+//   }
+// }
 ---
 
 <Layout title="Sign in">

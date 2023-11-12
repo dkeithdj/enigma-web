@@ -1,0 +1,33 @@
+---
+import { getEvents } from "@/hooks/getEvents";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "./ui/card";
+
+const events = await getEvents();
+console.log(events);
+---
+
+{
+  events.map((event) => (
+    <Card>
+      <CardHeader>
+        <CardTitle>{event.title}</CardTitle>
+      </CardHeader>
+      <div>{event.description}</div>
+      <CardContent />
+    </Card> // <Card>
+    //   <CardHeader>
+    //     <CardTitle>{event.title}</CardTitle>
+    //     <CardDescription>{event.description}</CardDescription>
+    //   </CardHeader>
+    //   <CardContent>
+    //     <div>Test</div>
+    //   </CardContent>
+    // </Card>
+  ))
+}

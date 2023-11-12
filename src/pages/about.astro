@@ -1,6 +1,18 @@
 ---
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { auth } from "@/firebase/server";
 import Layout from "@/layouts/Layout.astro";
+/* Get session cookie */
+if (!Astro.cookies.has("session")) {
+  return Astro.redirect("/signin");
+}
+const sessionCookie = Astro.cookies.get("session").value;
+const decodedCookie = await auth.verifySessionCookie(sessionCookie);
+const user = await auth.getUser(decodedCookie.uid);
+
+if (!user) {
+  return Astro.redirect("/signin");
+}
 ---
 
 <Layout title="About">
@@ -16,10 +28,10 @@ import Layout from "@/layouts/Layout.astro";
         <p class="text-justify">
           We aspire to be a community of <span class="font-bold"
             >exceptional individuals</span
-          > equipped with the skills, knowledge, and mindset to excel in their respective
-          fields of expertise, pioneering a path toward a future where technology
-          is harnessed to make a profound and purposeful impact, driving progress
-          forward.
+          > equipped with the skills, knowledge, and mindset to excel in their
+          respective fields of expertise, pioneering a path toward a future
+          where technology is harnessed to make a profound and purposeful
+          impact, driving progress forward.
         </p>
       </CardContent>
     </Card>
@@ -63,3 +75,5 @@ import Layout from "@/layouts/Layout.astro";
     <LogoProcess client:load />
   </section> -->
 </Layout>
+
+ test test test test test

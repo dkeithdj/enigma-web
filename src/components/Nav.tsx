@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useMediaQuery } from "@/utils/useMediaQuery";
 import { motion } from "framer-motion";
 import LoginCard from "./LoginCard";
@@ -36,11 +36,14 @@ const Nav = () => {
             <a href="/" className="hover:text-theme_accent-light">
               Home
             </a>
-            <a href="/about" className="hover:text-theme_accent-light">
-              About
-            </a>
             <a href="/events" className="hover:text-theme_accent-light">
               Events
+            </a>
+            <a href="/team" className="hover:text-theme_accent-light">
+              Team
+            </a>
+            <a href="/about" className="hover:text-theme_accent-light">
+              About
             </a>
           </div>
         )}
@@ -83,11 +86,14 @@ const Nav = () => {
             <a href="/" className="hover:text-theme_accent-light">
               Home
             </a>
-            <a href="/about" className="hover:text-theme_accent-light">
-              About
-            </a>
             <a href="/events" className="hover:text-theme_accent-light">
               Events
+            </a>
+            <a href="/team" className="hover:text-theme_accent-light">
+              Team
+            </a>
+            <a href="/about" className="hover:text-theme_accent-light">
+              About
             </a>
           </motion.div>
         </div>
