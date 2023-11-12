@@ -43,12 +43,15 @@ export default defineConfig({
         ],
       },
       workbox: {
-        navigateFallback: "/404",
+        navigateFallback: "/",
         globPatterns: ["**/*.{css,js,html,svg,png,ico,txt,astro,tsx}"],
       },
       devOptions: {
         enabled: true,
-        // navigateFallbackAllowlist: [/^\/404$/],
+        navigateFallbackAllowlist: [/^\//],
+      },
+      experimental: {
+        directoryAndTrailingSlashHandler: true,
       },
     }),
   ],

@@ -1,15 +1,13 @@
 /// <reference types="astro/client" />
-/// <reference types="vite-plugin-pwa/client" />
-/// <reference types="vite-plugin-pwa/react" />
 
 interface ImportMetaEnv {
-  readonly FIREBASE_API_KEY: string;
-  readonly FIREBASE_AUTH_DOMAIN: string;
-  readonly FIREBASE_PROJECT_ID: string;
-  readonly FIREBASE_STORAGE_BUCKET: string;
-  readonly FIREBASE_MESSAGING_SENDER_ID: string;
-  readonly FIREBASE_APP_ID: string;
-  readonly FIREBASE_MEASUREMENT_ID: string;
+  readonly PUBLIC_FIREBASE_API_KEY: string;
+  readonly PUBLIC_FIREBASE_AUTH_DOMAIN: string;
+  readonly PUBLIC_FIREBASE_PROJECT_ID: string;
+  readonly PUBLIC_FIREBASE_STORAGE_BUCKET: string;
+  readonly PUBLIC_FIREBASE_MESSAGING_SENDER_ID: string;
+  readonly PUBLIC_FIREBASE_APP_ID: string;
+  readonly PUBLIC_FIREBASE_MEASUREMENT_ID: string;
 
   readonly FIREBASE_PRIVATE_KEY_ID: string;
   // readonly FIREBASE_PRIVATE_KEY: string;
