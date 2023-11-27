@@ -1,4 +1,6 @@
 /// <reference types="astro/client" />
+/// <reference types="vite-plugin-pwa/info" />
+/// <reference types="vite-plugin-pwa/vanillajs" />
 
 interface ImportMetaEnv {
   readonly PUBLIC_FIREBASE_API_KEY: string;

@@ -1,16 +1,16 @@
 ---
 import Footer from "@/components/Footer.astro";
 import Nav from "@/components/Nav";
-import ReloadPrompt from "@/components/ReloadPrompt.astro";
 import BaseLayout from "./BaseLayout.astro";
+import { ViewTransitions } from "astro:transitions";
 ---
 
 <BaseLayout>
+  <ViewTransitions />
   <div class="main"></div>
   <main class="font-poppins relative">
     <Nav client:only />
-    <slot />
+    <div class="max-w-4xl mx-auto"><slot /></div>
     <Footer />
-    <ReloadPrompt />
   </main>
 </BaseLayout>
