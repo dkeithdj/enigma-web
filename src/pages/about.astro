@@ -3,16 +3,16 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { auth } from "@/firebase/server";
 import Layout from "@/layouts/Layout.astro";
 /* Get session cookie */
-if (!Astro.cookies.has("session")) {
-  return Astro.redirect("/signin");
-}
-const sessionCookie = Astro.cookies.get("session").value;
-const decodedCookie = await auth.verifySessionCookie(sessionCookie);
-const user = await auth.getUser(decodedCookie.uid);
-
-if (!user) {
-  return Astro.redirect("/signin");
-}
+// if (!Astro.cookies.has("session")) {
+//   return Astro.redirect("/signin");
+// }
+// const sessionCookie = Astro.cookies.get("session").value;
+// const decodedCookie = await auth.verifySessionCookie(sessionCookie);
+// const user = await auth.getUser(decodedCookie.uid);
+//
+// if (!user) {
+//   return Astro.redirect("/signin");
+// }
 ---
 
 <Layout title="About">
@@ -75,5 +75,3 @@ if (!user) {
     <LogoProcess client:load />
   </section> -->
 </Layout>
-
- test test test test test

@@ -4,19 +4,19 @@ import Hero from "@/components/Hero.astro";
 
 import { auth, db } from "../firebase/server";
 import { getEvents } from "@/hooks/getEvents";
-import EventCard from "@/components/EventCard.astro";
+import Events from "@/components/Events.astro";
 
 /* Check current session */
-if (!Astro.cookies.has("session")) {
-  return Astro.redirect("/signin");
-}
-const sessionCookie = Astro.cookies.get("session").value;
-const decodedCookie = await auth.verifySessionCookie(sessionCookie);
-const user = await auth.getUser(decodedCookie.uid);
-
-if (!user) {
-  return Astro.redirect("/signin");
-}
+// if (!Astro.cookies.has("session")) {
+//   return Astro.redirect("/signin");
+// }
+// const sessionCookie = Astro.cookies.get("session").value;
+// const decodedCookie = await auth.verifySessionCookie(sessionCookie);
+// const user = await auth.getUser(decodedCookie.uid);
+//
+// if (!user) {
+//   return Astro.redirect("/signin");
+// }
 
 // console.log(Astro.url);
 // const Auser = await fetch("http://localhost:4321/api/user", { method: "GET" });
@@ -29,16 +29,13 @@ if (!user) {
 // console.log(isAdmin);
 
 const events = await getEvents();
-console.log(events);
 ---
 
 <Layout title="Index">
-  <form action="/api/auth/signout">
-    <button type="submit">Sign out</button>
-  </form>
-
   <Hero />
-  <section class="py-12 px-4 md:px-20">
-    <EventCard />
-  </section>
+  <Events {events} />
 </Layout>
+
+<!-- <form action="/api/auth/signout"> -->
+<!--   <button type="submit">Sign out</button> -->
+<!-- </form> -->

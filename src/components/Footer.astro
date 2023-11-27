@@ -1,5 +1,5 @@
 ---
-import { Facebook, FacebookIcon, Mails, School } from "lucide-react";
+import { Facebook, FacebookIcon, Mails, School, Linkedin } from "lucide-react";
 import { Separator } from "./ui/separator";
 import { Badge } from "./ui/badge";
 ---
@@ -8,8 +8,10 @@ import { Badge } from "./ui/badge";
   <Separator />
   <div class="flex pt-4 justify-between px-16">
     <div class="mb-8 px-4">
-      <img src="/assets/enigma_Horizontal.svg" alt="enigma" width="150" />
-      <p class="pl-2 font-light">UM Enigma 2023-2024</p>
+      <div class="pl-2 py-1">
+        <img src="/enigma-horizontalv4.svg" alt="enigma" width="150" />
+      </div>
+      <p class="pl-2 font-light">2023-2024</p>
     </div>
     <div class="flex flex-col gap-y-2">
       <div class="font-bold">Socials</div>
@@ -32,6 +34,13 @@ import { Badge } from "./ui/badge";
           className="flex bg-theme_accent-light rounded-full hover:bg-theme_primary"
         >
           <span class="pr-1"><Mails size={20} /></span> Email
+        </Badge>
+      </a>
+      <a href="https://www.linkedin.com/company/um-enigma">
+        <Badge
+          className="flex bg-theme_accent-light rounded-full hover:bg-theme_primary"
+        >
+          <span class="pr-1"><Linkedin size={20} /></span> Email
         </Badge>
       </a>
     </div>
