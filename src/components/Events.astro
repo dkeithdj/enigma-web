@@ -1,0 +1,21 @@
+---
+import type { EventInfo } from "@/types";
+import EventCard from "./EventCard.astro";
+const { events } = Astro.props;
+---
+
+<section class="">
+  {
+    events.map((event: EventInfo) => (
+      <a href={`/events/${event.slug}`}>
+        <EventCard
+          title={event.title}
+          description={event.description}
+          location={event.location}
+          timeStart={event.timeStart}
+          timeEnd={event.timeEnd}
+        />
+      </a>
+    ))
+  }
+</section>

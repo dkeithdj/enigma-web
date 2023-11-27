@@ -1,0 +1,27 @@
+---
+import { Card, CardFooter, CardHeader } from "./ui/card";
+
+const { month, date, isLarge } = Astro.props;
+---
+
+{
+  isLarge ? (
+    <Card className="p-0 w-16 h-16 overflow-hidden">
+      <CardHeader className="p-0 bg-gray-300 text-center">
+        <p class="w-full text-xs py-0.5">{month.slice(0, 3).toUpperCase()}</p>
+      </CardHeader>
+      <div>
+        <p class="text-center text-2xl font-bold pt-1">{date}</p>
+      </div>
+    </Card>
+  ) : (
+    <Card className="p-0 w-12 h-12 overflow-hidden">
+      <CardHeader className="p-0 bg-gray-300 text-center">
+        <p class="w-full text-xs py-0.5">{month.slice(0, 3).toUpperCase()}</p>
+      </CardHeader>
+      <div>
+        <p class="text-center text-lg font-bold">{date}</p>
+      </div>
+    </Card>
+  )
+}
