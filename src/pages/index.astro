@@ -1,41 +1,12 @@
 ---
-import Layout from "../layouts/Layout.astro";
 import Hero from "@/components/Hero.astro";
-
-import { auth, db } from "../firebase/server";
-import { getEvents } from "@/hooks/getEvents";
 import Events from "@/components/Events.astro";
-
-/* Check current session */
-// if (!Astro.cookies.has("session")) {
-//   return Astro.redirect("/signin");
-// }
-// const sessionCookie = Astro.cookies.get("session").value;
-// const decodedCookie = await auth.verifySessionCookie(sessionCookie);
-// const user = await auth.getUser(decodedCookie.uid);
-//
-// if (!user) {
-//   return Astro.redirect("/signin");
-// }
-
-// console.log(Astro.url);
-// const Auser = await fetch("http://localhost:4321/api/user", { method: "GET" });
-// console.log(Auser);
-
-//query data from firebase that checks if document user has admin role
-// const userRef = db.collection("user").doc(user.uid);
-// const userData = await userRef.get().then((doc) => doc.data());
-// const isAdmin = userData?.admin;
-// console.log(isAdmin);
-
-const events = await getEvents();
+import About from "@/components/About.astro";
+import Layout from "@/layouts/Layout.astro";
 ---
 
-<Layout title="Index">
+<Layout title="UM Enigma">
   <Hero />
-  <Events {events} />
+  <About />
+  <Events />
 </Layout>
-
-<!-- <form action="/api/auth/signout"> -->
-<!--   <button type="submit">Sign out</button> -->
-<!-- </form> -->

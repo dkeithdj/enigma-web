@@ -30,7 +30,7 @@ const Events = ({ posts, limit }: { posts: any[]; limit: any }) => {
         {limit && (
           <a
             href="/events"
-            className="flex items-end text-md pb-2 hover:text-theme_accent-light"
+            className="flex items-end text-md pb-2 hover:text-bahamablue-700"
           >
             <p>View More </p>
             <span>

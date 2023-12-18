@@ -3,18 +3,28 @@ export const prerender = true;
 import Layout from "@/layouts/Layout.astro";
 import type { InferGetStaticParamsType } from "astro";
 
-export function getStaticPaths() {
-  const posts = [{ slug: "test" }];
-  return posts.map((post) => ({
-    params: { slug: post.slug },
-  }));
+import { getEvents } from "@/hooks/getEvents";
+
+export async function getStaticPaths() {
+  const events = await getEvents();
+  return events.map(
+    ({ slug, title, timeEnd, timeStart, location, description, time }) => {
+      return {
+        params: { slug },
+        props: { title, timeEnd, timeStart, location, description, time },
+      };
+    },
+  );
 }
 
 type Params = InferGetStaticParamsType<typeof getStaticPaths>;
 const { slug } = Astro.params as Params;
+const { title, timeEnd, timeStart, location, description, time } = Astro.props;
 ---
 
 <Layout title={"Event Slug"}>
+  <div>this is a {title}</div>
+  <div>this is a {description}</div>
   <div class="relative w-full h-[150px]">
     <!-- <div
       class="absolute inset-0 bg-center bg-cover"

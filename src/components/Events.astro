@@ -1,21 +1,21 @@
 ---
-import type { EventInfo } from "@/types";
 import EventCard from "./EventCard.astro";
-const { events } = Astro.props;
+import { getEvents } from "@/hooks/getEvents";
+// const { events } = Astro.props;
+const events = await getEvents();
 ---
 
-<section class="">
+<section class="px-4">
   {
-    events.map((event: EventInfo) => (
-      <a href={`/events/${event.slug}`}>
-        <EventCard
-          title={event.title}
-          description={event.description}
-          location={event.location}
-          timeStart={event.timeStart}
-          timeEnd={event.timeEnd}
-        />
-      </a>
+    events.map((event) => (
+      <EventCard
+        title={event.title}
+        slug={event.slug}
+        description={event.description}
+        location={event.location}
+        timeStart={event.timeStart}
+        timeEnd={event.timeEnd}
+      />
     ))
   }
 </section>

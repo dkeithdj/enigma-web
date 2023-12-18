@@ -1,0 +1,14 @@
+---
+import Footer from "@/components/Footer.astro";
+import Nav from "@/components/Nav";
+import ReloadPrompt from "@/components/ReloadPrompt.astro";
+import BaseLayout from "./BaseLayout.astro";
+---
+
+<BaseLayout>
+  <div class="main"></div>
+  <main class="font-poppins relative">
+    <slot />
+  </main>
+  <ReloadPrompt />
+</BaseLayout>

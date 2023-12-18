@@ -1,5 +1,6 @@
 ---
 // import Events from "@/components/Events";
+import Events from "@/components/Events.astro";
 import {
   Card,
   CardHeader,
@@ -14,9 +15,6 @@ import Layout from "@/layouts/Layout.astro";
 // const posts = await getPosts();
 ---
 
-<Layout title="Events">
-  <section class="py-12 px-4 md:px-20">
-    Events
-    <!-- <Events posts={posts} client:load /> -->
-  </section>
+<Layout title="Events | Enigma">
+  <Events />
 </Layout>
