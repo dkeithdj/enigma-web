@@ -1,5 +1,5 @@
 ---
-
+import { Image } from "astro:assets";
 ---
 
 <section class="pb-24 md:px-20">
@@ -28,7 +28,13 @@
     </div>
     <!-- Image -->
     <div class="md:w-1/2">
-      <img src="enigma_v3.svg" alt="enigma" class="mx-auto w-[300px]" />
+      <Image
+        src="enigma_v3.svg"
+        width="300"
+        height="150"
+        alt="enigma"
+        class="mx-auto w-[300px]"
+      />
     </div>
   </div>
 </section>
