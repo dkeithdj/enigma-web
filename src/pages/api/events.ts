@@ -1,24 +1,33 @@
-import { db } from "@/firebase/server";
-import type { EventInfo } from "@/types";
-import { getTimestamp } from "@/utils/getTimestamp";
-import type { APIContext, APIRoute } from "astro";
+import type { APIRoute } from "astro";
 
-export const GET = async () => {
-  try {
-    const eventsRef = db.collection("events");
-    const eventsSnapshot = await eventsRef.get();
+export type Event = {
+  id: number;
+  name: string;
+  date: string;
+  location: string;
+};
 
-    const events = eventsSnapshot.docs.map((doc) => {
-      const data = doc.data();
-      return {
-        ...data,
-        timeStart: getTimestamp(data.timeStart.toDate()),
-        timeEnd: getTimestamp(data.timeEnd.toDate()),
-      } as EventInfo;
-    });
+const events: Event[] = [
+  {
+    id: 1,
+    name: "Event 1",
+    date: "2022-01-01",
+    location: "Location 1",
+  },
+  {
+    id: 2,
+    name: "Event 2",
+    date: "2022-02-01",
+    location: "Location 2",
+  },
+  {
+    id: 3,
+    name: "Event 3",
+    date: "2022-03-01",
+    location: "Location 3",
+  },
+];
 
-    return new Response(JSON.stringify(events), { status: 200 });
-  } catch (error) {
-    return new Response(JSON.stringify({ error: error }), { status: 500 });
-  }
+export const GET: APIRoute = async () => {
+  return new Response(JSON.stringify(events));
 };
