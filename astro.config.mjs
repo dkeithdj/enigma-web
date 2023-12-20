@@ -9,7 +9,7 @@ export default defineConfig({
   output: "server",
   adapter: vercel(),
   image: {
-    domains: ["firebasestorage.googleapis.com"],
+    remotePatterns: [{ protocol: "https" }],
   },
   integrations: [
     tailwind({
