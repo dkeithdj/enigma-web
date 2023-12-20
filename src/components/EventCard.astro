@@ -14,7 +14,7 @@ import Tag from "./Tag.astro";
 const { title, slug, description, location, timeStart, timeEnd, image } =
   Astro.props;
 const cardStyle =
-  " mx-auto rounded-2xl p-2  my-6 shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out cursor-pointer";
+  " mx-auto rounded-2xl p-2  my-6 shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out cursor-pointer overflow-hidden";
 ---
 
 <Card className={cardStyle}>
@@ -24,8 +24,8 @@ const cardStyle =
         src={image}
         alt={title}
         width="800"
-        height="500"
-        class="rounded-xl"
+        height="800"
+        class="rounded-xl w-full h-full object-contain"
       />
     </div>
   </a>
