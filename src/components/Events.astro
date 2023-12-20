@@ -14,7 +14,7 @@ const events: EventInfo[] = await response.json();
       >Upcoming</span
     > Events 🗓️
   </div>
-  <div class="max-w-[800px] mx-auto px-4 py-8 md:px-0">
+  <div>
     {
       events
         .filter((event) => new Date(event.timeEnd.timestamp) > new Date())
@@ -47,26 +47,24 @@ const events: EventInfo[] = await response.json();
           </span>{" "}
           Events 🗓️
         </div>
-        <div class="max-w-[800px] mx-auto px-4 py-8 md:px-0">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {events
-              .filter((event) => new Date(event.timeEnd.timestamp) < new Date())
-              .sort(
-                (a, b) =>
-                  Number(b.timeStart.timestamp) - Number(a.timeStart.timestamp)
-              )
-              .map((event) => (
-                <EventCard
-                  title={event.title}
-                  slug={event.slug}
-                  description={event.description}
-                  location={event.location}
-                  timeStart={event.timeStart}
-                  timeEnd={event.timeEnd}
-                  image={event.imageUrl}
-                />
-              ))}
-          </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {events
+            .filter((event) => new Date(event.timeEnd.timestamp) < new Date())
+            .sort(
+              (a, b) =>
+                Number(b.timeStart.timestamp) - Number(a.timeStart.timestamp)
+            )
+            .map((event) => (
+              <EventCard
+                title={event.title}
+                slug={event.slug}
+                description={event.description}
+                location={event.location}
+                timeStart={event.timeStart}
+                timeEnd={event.timeEnd}
+                image={event.imageUrl}
+              />
+            ))}
         </div>
       </>
     )
