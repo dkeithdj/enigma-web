@@ -1,0 +1,65 @@
+---
+import Hero from "@/components/Hero.astro";
+import Events from "@/components/Events.astro";
+import About from "@/components/About.astro";
+import Layout from "@/layouts/Layout.astro";
+import { db, storage } from "@/firebase/server";
+import { getDownloadURL } from "firebase-admin/storage";
+import type { TeamInfo } from "@/types";
+import { committees, core_committees } from "@/data/team";
+// import { core_officers } from "@/data/team";
+// import sharp from "sharp";
+
+const bucket = storage.bucket("um-enigma.appspot.com");
+const setFirestoreStorage = async (collection: string, team: TeamInfo) => {
+  const urlSource = `public${team.imageUrl}`;
+  const urlDestination = `teams/sy_23_24/${collection}/${team.position
+    .toLowerCase()
+    .replaceAll(" ", "_")}/${
+    team.last_name.toLowerCase().replace(" ", "_") +
+    "." +
+    team.imageUrl?.split(".")[1]
+  }`;
+  try {
+    const addDoc = await db
+      .collection("teams")
+      .doc("sy_23_24")
+      .collection(collection)
+      .add({
+        first_name: team.first_name,
+        last_name: team.last_name,
+        position: team.position,
+        program: team.program,
+        year_level: team.year_level,
+      });
+    await bucket
+      .upload(urlSource, {
+        destination: urlDestination,
+        metadata: {
+          contentType: `image/${
+            team.imageUrl?.includes(".png") ? "png" : "jpeg"
+          }`,
+        },
+      })
+      .then(async () => {
+        const fileRef = bucket.file(urlDestination);
+        const downloadURL = await getDownloadURL(fileRef);
+        await addDoc
+          .update({
+            imageUrl: downloadURL,
+          })
+          .then((res) => console.log(res));
+      });
+    console.log(team.first_name, "added");
+  } catch (error) {
+    console.log(error);
+  }
+};
+const isInHomePage = true;
+---
+
+<Layout title="UM Enigma">
+  <Hero />
+  <About />
+  <Events {isInHomePage} />
+</Layout>

@@ -1,0 +1,19 @@
+---
+import Footer from "@/components/Footer.astro";
+import Nav from "@/components/Nav";
+import BaseLayout from "./BaseLayout.astro";
+const { title } = Astro.props;
+---
+
+<BaseLayout title={title}>
+  <body>
+    <div class="main"></div>
+    <main class="font-poppins relative">
+      <Nav client:only />
+      <div class="max-w-4xl mx-auto">
+        <slot />
+      </div>
+      <Footer />
+    </main>
+  </body>
+</BaseLayout>

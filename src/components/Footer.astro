@@ -1,0 +1,97 @@
+---
+import { Facebook, Mails, Linkedin, Instagram } from "lucide-react";
+import { Image } from "astro:assets";
+---
+
+<footer class="bg-gradient-to-b from-bahamablue-50/0 to-bahamablue-50">
+  <div class="max-w-[800px] mx-auto px-4 py-8 md:px-0">
+    <div class="flex flex-col pb-10">
+      <div class="text-4xl font-bold">
+        Connect with <span
+          class="bg-gradient-to-r from-bahamablue-900 via-bahamablue-700 to-rosecherry-700 bg-clip-text text-transparent"
+          >Us</span
+        >
+      </div>
+      <div class="text-xl font-medium py-2">
+        Explore our social media channels to read about the Organization's
+        latest updates.
+      </div>
+      <a
+        href="https://www.linkedin.com/company/um-enigma"
+        class="flex justify-between px-2 py-1 my-1 text-bahamablue-50 bg-bahamablue-700 rounded-lg hover:bg-bahamablue-600 shadow-sm transition-all"
+      >
+        <p class="flex">
+          <Linkedin className="mr-4" />
+          <span class="hidden md:block">LinkedIn</span>
+        </p> UM Enigma
+      </a>
+      <a
+        href="mailto:enigma@umindanao.edu.ph"
+        class="flex justify-between px-2 py-1 my-1 text-rosecherry-50 bg-rosecherry-700 rounded-lg hover:bg-rosecherry-600 shadow-sm transition-all"
+      >
+        <p class="flex">
+          <Mails className="mr-4" />
+          <span class="hidden md:block">Email</span>
+        </p> enigma@umindanao.edu.ph
+      </a>
+      <a
+        href="https://facebook.com/um.enigma"
+        class="flex justify-between px-2 py-1 my-1 text-stiletto-50 bg-stiletto-700 rounded-lg hover:bg-stiletto-600 shadow-sm transition-all"
+      >
+        <p class="flex">
+          <Facebook className="mr-4" />
+          <span class="hidden md:block">Facebook</span>
+        </p> University of Mindanao Enigma
+      </a>
+      <a
+        href="https://instagram.com/cce.enigma"
+        class="flex justify-between px-2 py-1 my-1 text-bahamablue-50 bg-bahamablue-600 rounded-lg hover:bg-bahamablue-500 shadow-sm transition-all"
+      >
+        <p class="flex">
+          <Instagram className="mr-4" />
+          <span class="hidden md:block">Instagram</span>
+        </p> cce.enigma
+      </a>
+    </div>
+
+    <div class="grid grid-cols-2 gap-y-4 sm:flex sm:justify-between">
+      <div class="flex sm:block">
+        <Image
+          src="/enigma-horizontalv4.svg"
+          alt="enigma"
+          width={150}
+          height={150}
+          class="min-w-[100px] w-36 sm:w-44"
+        />
+      </div>
+      <div>
+        <div class="font-bold pb-1"><h3>About</h3></div>
+        <div>
+          <div><a href="/about#vision">Vision</a></div>
+          <div><a href="/about#mission">Mission</a></div>
+        </div>
+      </div>
+      <div>
+        <div class="font-bold pb-1"><h3>Events</h3></div>
+        <div>
+          <div><a href="/events#upcoming">Upcoming</a></div>
+          <div><a href="/events#previous">Previous</a></div>
+        </div>
+      </div>
+      <div>
+        <div class="font-bold pb-1"><h3>The Team</h3></div>
+        <div>
+          <div><a href="/team#officers">Officers</a></div>
+          <div><a href="/team#committee_heads">Committee Heads</a></div>
+          <div><a href="/team#creatives">Creatives</a></div>
+          <div><a href="/team#logistics">Logistics</a></div>
+          <div><a href="/team#documentations">Documentations</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-8 text-center text-mineshaft-800">
+      <div>Copyright &copy; 2023. UM Enigma. All Rights Reserved.</div>
+    </div>
+  </div>
+</footer>
