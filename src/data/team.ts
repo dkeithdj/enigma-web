@@ -21,27 +21,13 @@ export const list = [
     description: "a workshop for web development",
     slug: "intro-to-web",
   },
-  {
-    title: "IT Olympiad",
-    description: "series of competitions conducted outside the University",
-    slug: "it-olympiad",
-  },
-  {
-    title: "Hack4Gov",
-    description: "hackathon conducted by DICT",
-    slug: "hack-4-gov",
-  },
-  {
-    title: "Team Building",
-    description: "Team building",
-    slug: "team-building",
-  },
 ];
 export const adviser: TeamInfo = {
   first_name: "Sheila Marie",
   last_name: "Villarin",
   position: "Professor",
   term: "2023-2024",
+  imageUrl: "/people/adviser.jpg",
 };
 export const core_officers: TeamInfo[] = [
   {
@@ -51,6 +37,7 @@ export const core_officers: TeamInfo[] = [
     program: "BSCS",
     year_level: "3rd",
     term: "2023-2024",
+    imageUrl: "/people/dejesus.jpg",
   },
   {
     first_name: "Owe",
@@ -59,6 +46,7 @@ export const core_officers: TeamInfo[] = [
     program: "BSCS",
     year_level: "3rd",
     term: "2023-2024",
+    imageUrl: "/people/owe.jpg",
   },
   {
     first_name: "Stephanie",
@@ -67,6 +55,7 @@ export const core_officers: TeamInfo[] = [
     program: "BSCS",
     year_level: "3rd",
     term: "2023-2024",
+    imageUrl: "/people/palero.png",
   },
   {
     first_name: "Phoebe Kaye",
@@ -75,6 +64,7 @@ export const core_officers: TeamInfo[] = [
     program: "BSIT",
     year_level: "3rd",
     term: "2023-2024",
+    imageUrl: "/people/lerog.png",
   },
   {
     first_name: "Reagan James",
@@ -83,6 +73,7 @@ export const core_officers: TeamInfo[] = [
     program: "BSCS",
     year_level: "3rd",
     term: "2023-2024",
+    imageUrl: "/people/mabawad.png",
   },
   {
     first_name: "Christine Gamutan",
@@ -91,6 +82,7 @@ export const core_officers: TeamInfo[] = [
     program: "BSIT",
     year_level: "3rd",
     term: "2023-2024",
+    imageUrl: "/people/dacles.png",
   },
   {
     first_name: "Jhonna Mae",
@@ -99,6 +91,7 @@ export const core_officers: TeamInfo[] = [
     program: "BSIT",
     year_level: "3rd",
     term: "2023-2024",
+    imageUrl: "/people/awayan.png",
   },
   {
     first_name: "Wilbert John",
@@ -107,6 +100,7 @@ export const core_officers: TeamInfo[] = [
     program: "BSCS",
     year_level: "4th",
     term: "2023-2024",
+    imageUrl: "/people/alfornon.png",
   },
   {
     first_name: "Rexdan",
@@ -115,6 +109,7 @@ export const core_officers: TeamInfo[] = [
     program: "BSIT",
     year_level: "3rd",
     term: "2023-2024",
+    imageUrl: "/people/rex.png",
   },
   {
     first_name: "Ariel July",
@@ -123,6 +118,7 @@ export const core_officers: TeamInfo[] = [
     program: "BSIT",
     year_level: "2nd",
     term: "2023-2024",
+    imageUrl: "/people/traje.png",
   },
   {
     first_name: "Lord Anthony",
@@ -131,6 +127,7 @@ export const core_officers: TeamInfo[] = [
     program: "BSIT",
     year_level: "2nd",
     term: "2023-2024",
+    imageUrl: "/people/acuna.png",
   },
 ];
 
@@ -142,6 +139,7 @@ export const core_committees: TeamInfo[] = [
     program: "BSIT",
     year_level: "2nd",
     term: "2023-2024",
+    imageUrl: "/people/jude.png",
   },
   {
     first_name: "Krizmelh",
@@ -150,10 +148,11 @@ export const core_committees: TeamInfo[] = [
     program: "BSCS",
     year_level: "3rd",
     term: "2023-2024",
+    imageUrl: "/people/bacus.png",
   },
 ];
 
-export const creatives: TeamInfo[] = [
+export const committees: TeamInfo[] = [
   {
     first_name: "Princess Ann",
     last_name: "Salarza",
@@ -161,6 +160,7 @@ export const creatives: TeamInfo[] = [
     program: "BSCS",
     year_level: "2nd",
     term: "2023-2024",
+    imageUrl: "/people/salarza.png",
   },
   {
     first_name: "Anne Gwyneth",
@@ -169,6 +169,7 @@ export const creatives: TeamInfo[] = [
     program: "BSEMC",
     year_level: "3rd",
     term: "2023-2024",
+    imageUrl: "/people/pal.png",
   },
   {
     first_name: "Jesse",
@@ -177,6 +178,7 @@ export const creatives: TeamInfo[] = [
     program: "BMMA",
     year_level: "2nd",
     term: "2023-2024",
+    imageUrl: "/people/jesse.png",
   },
   {
     first_name: "Ronico",
@@ -185,6 +187,7 @@ export const creatives: TeamInfo[] = [
     program: "BSIT",
     year_level: "1st",
     term: "2023-2024",
+    imageUrl: "/people/default.png",
   },
   {
     first_name: "Crixa",
@@ -193,6 +196,7 @@ export const creatives: TeamInfo[] = [
     program: "BSCS",
     year_level: "1st",
     term: "2023-2024",
+    imageUrl: "/people/crixa.png",
   },
   {
     first_name: "Mario Jr",
@@ -201,6 +205,7 @@ export const creatives: TeamInfo[] = [
     program: "BSCS",
     year_level: "2nd",
     term: "2023-2024",
+    imageUrl: "/people/mario.png",
   },
   {
     first_name: "Roxanne",
@@ -209,6 +214,7 @@ export const creatives: TeamInfo[] = [
     program: "BSCS",
     year_level: "2nd",
     term: "2023-2024",
+    imageUrl: "/people/roxanne.png",
   },
   {
     first_name: "Anna May",
@@ -217,6 +223,7 @@ export const creatives: TeamInfo[] = [
     program: "BSCS",
     year_level: "2nd",
     term: "2023-2024",
+    imageUrl: "/people/bote.png",
   },
   {
     first_name: "John Lloyd",
@@ -225,6 +232,7 @@ export const creatives: TeamInfo[] = [
     program: "BSCS",
     year_level: "2nd",
     term: "2023-2024",
+    imageUrl: "/people/default.png",
   },
   {
     first_name: "Lance",
@@ -233,6 +241,7 @@ export const creatives: TeamInfo[] = [
     program: "BSCS",
     year_level: "2nd",
     term: "2023-2024",
+    imageUrl: "/people/lance.png",
   },
   {
     first_name: "Jheric Maurice",
@@ -241,6 +250,7 @@ export const creatives: TeamInfo[] = [
     program: "BSCS",
     year_level: "2nd",
     term: "2023-2024",
+    imageUrl: "/people/macasabwang.png",
   },
   {
     first_name: "Famira Mei",
@@ -249,6 +259,7 @@ export const creatives: TeamInfo[] = [
     program: "BSCS",
     year_level: "2nd",
     term: "2023-2024",
+    imageUrl: "/people/catalan.png",
   },
   {
     first_name: "Alden",
@@ -257,6 +268,7 @@ export const creatives: TeamInfo[] = [
     program: "BSIT",
     year_level: "1st",
     term: "2023-2024",
+    imageUrl: "/people/cedeno.png",
   },
   {
     first_name: "Princess",
@@ -265,6 +277,7 @@ export const creatives: TeamInfo[] = [
     program: "BSCS",
     year_level: "2nd",
     term: "2023-2024",
+    imageUrl: "/people/caballeda.png",
   },
   {
     first_name: "Rachelle Lyra",
@@ -273,6 +286,7 @@ export const creatives: TeamInfo[] = [
     program: "BSCS",
     year_level: "2nd",
     term: "2023-2024",
+    imageUrl: "/people/cuizon.png",
   },
   {
     first_name: "Ejay",
@@ -281,6 +295,7 @@ export const creatives: TeamInfo[] = [
     program: "BSIT",
     year_level: "4th",
     term: "2023-2024",
+    imageUrl: "/people/bocao.png",
   },
   {
     first_name: "Jonniel",
@@ -289,6 +304,7 @@ export const creatives: TeamInfo[] = [
     program: "BSCS",
     year_level: "2nd",
     term: "2023-2024",
+    imageUrl: "/people/mirafuentes.png",
   },
   {
     first_name: "Mark Jade",
@@ -297,6 +313,7 @@ export const creatives: TeamInfo[] = [
     program: "BSIT",
     year_level: "1st",
     term: "2023-2024",
+    imageUrl: "/people/palma.png",
   },
   {
     first_name: "Reiginear",
@@ -305,5 +322,6 @@ export const creatives: TeamInfo[] = [
     program: "BSCS",
     year_level: "2nd",
     term: "2023-2024",
+    imageUrl: "/people/magallanes.png",
   },
 ];

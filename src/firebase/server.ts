@@ -2,6 +2,7 @@ import type { ServiceAccount } from "firebase-admin";
 import { initializeApp, cert, getApps } from "firebase-admin/app";
 import { getAuth } from "firebase-admin/auth";
 import { getFirestore } from "firebase-admin/firestore";
+import { getStorage } from "firebase-admin/storage";
 
 const activeApps = getApps();
 const serviceAccount = {
@@ -15,6 +16,7 @@ const serviceAccount = {
   token_uri: import.meta.env.FIREBASE_TOKEN_URI,
   auth_provider_x509_cert_url: import.meta.env.FIREBASE_AUTH_CERT_URL,
   client_x509_cert_url: import.meta.env.FIREBASE_CLIENT_CERT_URL,
+  storageBucket: import.meta.env.FIREBASE_STORAGE_BUCKET,
 };
 
 export const app =
@@ -26,3 +28,4 @@ export const app =
 
 export const auth = getAuth(app);
 export const db = getFirestore(app);
+export const storage = getStorage(app);
