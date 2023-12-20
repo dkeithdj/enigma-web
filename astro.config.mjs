@@ -8,6 +8,9 @@ import AstroPWA from "@vite-pwa/astro";
 export default defineConfig({
   output: "server",
   adapter: vercel(),
+  image: {
+    domains: ["firebasestorage.googleapis.com"],
+  },
   integrations: [
     tailwind({
       applyBaseStyles: false,
