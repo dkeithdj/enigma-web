@@ -4,6 +4,7 @@ export interface TimeInfo {
   date: number;
   dayOfWeek: string;
   time: string;
+  timestamp: Date;
 }
 
 export interface EventInfo {
@@ -25,4 +26,5 @@ export interface TeamInfo {
   term: string;
   program?: string;
   year_level?: string;
+  order?: number;
 }

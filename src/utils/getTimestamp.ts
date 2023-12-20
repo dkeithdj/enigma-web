@@ -9,5 +9,5 @@ export const getTimestamp = (timestamp: Date) => {
     hour: "2-digit",
     minute: "2-digit",
   });
-  return { year, month, date, dayOfWeek, time };
+  return { year, month, date, dayOfWeek, time, timestamp };
 };

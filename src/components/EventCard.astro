@@ -11,16 +11,17 @@ import CalendarDateCard from "./CalendarDateCard.astro";
 import LocationCard from "./LocationCard.astro";
 import Tag from "./Tag.astro";
 
-const { title, slug, description, location, timeStart, timeEnd } = Astro.props;
+const { title, slug, description, location, timeStart, timeEnd, image } =
+  Astro.props;
 const cardStyle =
-  "max-w-[800px] mx-auto rounded-2xl p-2  my-6 hover:shadow-xl transition-shadow duration-300 ease-in-out";
+  "max-w-[800px] mx-auto rounded-2xl p-2  my-6 shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out cursor-pointer";
 ---
 
 <Card className={cardStyle}>
   <a href={`/events/${slug}`}>
     <div class="">
       <Image
-        src="https://picsum.photos/800/500?random=1"
+        src={image ? image : "https://picsum.photos/100/200?random=1"}
         alt={title}
         width="800"
         height="500"
@@ -74,7 +75,7 @@ const cardStyle =
         </div>
       </div>
     </div>
-    <div class="w-52 flex flex-col justify-between">
+    <!-- <div class="w-52 flex flex-col justify-between">
       <div></div>
       <div class="flex flex-wrap md:flex-wrap-reverse md:justify-end">
         <Tag bgColor={"bg-rosecherry-300"} tagname={"cherry"} />
@@ -85,6 +86,6 @@ const cardStyle =
         />
         <Tag bgColor={"bg-bahamablue-300"} tagname={"webvember"} />
       </div>
-    </div>
+    </div> -->
   </CardContent>
 </Card>

@@ -2,50 +2,95 @@
 export const prerender = true;
 import Layout from "@/layouts/Layout.astro";
 import type { InferGetStaticParamsType } from "astro";
+import { Image } from "astro:assets";
 
 import { getEvents } from "@/hooks/getEvents";
+import CalendarDateCard from "@/components/CalendarDateCard.astro";
+import LocationCard from "@/components/LocationCard.astro";
 
 export async function getStaticPaths() {
   const events = await getEvents();
   return events.map(
-    ({ slug, title, timeEnd, timeStart, location, description, time }) => {
+    ({
+      slug,
+      title,
+      timeEnd,
+      timeStart,
+      location,
+      description,
+      time,
+      imageUrl,
+    }) => {
       return {
         params: { slug },
-        props: { title, timeEnd, timeStart, location, description, time },
+        props: {
+          title,
+          timeEnd,
+          timeStart,
+          location,
+          description,
+          time,
+          imageUrl,
+        },
       };
-    },
+    }
   );
 }
 
 type Params = InferGetStaticParamsType<typeof getStaticPaths>;
 const { slug } = Astro.params as Params;
-const { title, timeEnd, timeStart, location, description, time } = Astro.props;
+const { title, timeEnd, timeStart, location, description, time, imageUrl } =
+  Astro.props;
 ---
 
-<Layout title={"Event Slug"}>
-  <div>this is a {title}</div>
-  <div>this is a {description}</div>
-  <div class="relative w-full h-[150px]">
-    <!-- <div
-      class="absolute inset-0 bg-center bg-cover"
-      style={{
-        backgroundImage: `url(${post.mainImage}`,
-      }}
-    >
-    </div> -->
-    <div class="absolute inset-0 bg-gradient-to-t from-white to-transparent">
-    </div>
-    <div class="absolute inset-0 bg-white bg-opacity-50"></div>
-  </div>
-  <article class="max-w-5xl mx-auto">
-    <div class="mt-6 mx-auto prose">
-      <div class="not-prose">
-        <h1 class="text-4xl font-bold">
-          <!-- {post.title} -->
-        </h1>
-        <!-- {post.author && <Author {post} client:load />} -->
+<Layout title={`${title} | Enigma`}>
+  <article class="max-w-[800px] mx-auto px-4 py-8 md:px-0">
+    <div class="grid grid-rows-2 sm:grid-cols-2 sm:grid-rows-1 gap-4">
+      <div class="">
+        <Image
+          src={imageUrl ? imageUrl : "https://picsum.photos/100/200?random=1"}
+          alt={title}
+          width="800"
+          height="500"
+          class="rounded-xl"
+        />
       </div>
-      <!-- <PortableText value={post.body} /> -->
+      <div>
+        <div class="space-y-2">
+          <div>
+            <p class="font-bold text-3xl">{title}</p>
+          </div>
+          <div class="md:max-w-[500px] md:truncate text-gray-900 pb-4">
+            {description}
+          </div>
+        </div>
+        <div class="flex flex-col gap-y-4 gap-x-8">
+          <div class="flex gap-x-4 items-center">
+            <div>
+              <CalendarDateCard
+                month={timeStart.month}
+                date={timeStart.date}
+                isLarge={false}
+              />
+            </div>
+
+            <div class="flex flex-col">
+              <p class="text-sm font-bold">
+                {`${timeStart.dayOfWeek}, ${timeStart.month} ${timeStart.date}`}
+              </p>
+              <p class="text-sm text-gray-600">
+                {timeStart.time} - {timeEnd.time}
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-x-4 items-center">
+            <div><LocationCard /></div><div class="text-sm font-bold">
+              {location}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </article>
 </Layout>

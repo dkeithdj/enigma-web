@@ -1,21 +1,70 @@
 ---
 import EventCard from "./EventCard.astro";
 import { getEvents } from "@/hooks/getEvents";
-// const { events } = Astro.props;
 const events = await getEvents();
+const { isInHomePage } = Astro.props;
 ---
 
 <section class="px-4">
+  <div id="upcoming" class="text-5xl lg:text7xl font-bold text-center pt-8">
+    <span
+      class="bg-gradient-to-r from-bahamablue-900 via-bahamablue-700 to-rosecherry-700 bg-clip-text text-transparent"
+      >Upcoming</span
+    > Events 🗓️
+  </div>
+  <div>
+    {
+      events
+        .filter((event) => new Date(event.timeEnd.timestamp) > new Date())
+        .sort(
+          (a, b) =>
+            Number(b.timeStart.timestamp) - Number(a.timeStart.timestamp)
+        )
+        .map((event) => (
+          <EventCard
+            title={event.title}
+            slug={event.slug}
+            description={event.description}
+            location={event.location}
+            timeStart={event.timeStart}
+            timeEnd={event.timeEnd}
+            image={event.imageUrl}
+          />
+        ))
+    }
+  </div>
   {
-    events.map((event) => (
-      <EventCard
-        title={event.title}
-        slug={event.slug}
-        description={event.description}
-        location={event.location}
-        timeStart={event.timeStart}
-        timeEnd={event.timeEnd}
-      />
-    ))
+    !isInHomePage && (
+      <>
+        <div
+          id="previous"
+          class="text-5xl lg:text7xl font-bold text-center pt-8"
+        >
+          <span class="bg-gradient-to-r from-rosecherry-700 via-bahamablue-700 to-bahamablue-900 bg-clip-text text-transparent">
+            Previous
+          </span>{" "}
+          Events 🗓️
+        </div>
+        <div>
+          {events
+            .filter((event) => new Date(event.timeEnd.timestamp) < new Date())
+            .sort(
+              (a, b) =>
+                Number(b.timeStart.timestamp) - Number(a.timeStart.timestamp)
+            )
+            .map((event) => (
+              <EventCard
+                title={event.title}
+                slug={event.slug}
+                description={event.description}
+                location={event.location}
+                timeStart={event.timeStart}
+                timeEnd={event.timeEnd}
+                image={event.imageUrl}
+              />
+            ))}
+        </div>
+      </>
+    )
   }
 </section>
