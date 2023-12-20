@@ -8,9 +8,9 @@ import AstroPWA from "@vite-pwa/astro";
 export default defineConfig({
   output: "server",
   adapter: vercel(),
-  image: {
-    remotePatterns: [{ protocol: "https" }],
-  },
+  // image: {
+  //   remotePatterns: [{ protocol: "https" }],
+  // },
   integrations: [
     tailwind({
       applyBaseStyles: false,
