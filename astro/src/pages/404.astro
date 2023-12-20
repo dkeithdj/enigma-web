@@ -1,0 +1,24 @@
+---
+import type { BaseHeadProps } from "@/components/BaseHead.astro";
+import Layout from "@/layouts/Layout.astro";
+export interface Props {
+  seo?: BaseHeadProps;
+}
+
+const { seo } = Astro.props;
+const page_seo = {
+  ...seo,
+  title: "404",
+};
+---
+
+<Layout seo={page_seo}>
+  <div class="flex justify-center align-middle my-auto">
+    <h1 class="text-xl md:text-5xl font-bold flex">
+      <span
+        class="bg-gradient-to-l from-pink-600 to-red-700 bg-clip-text text-transparent"
+        >Oops</span
+      >, link does not exist.
+    </h1>
+  </div>
+</Layout>
