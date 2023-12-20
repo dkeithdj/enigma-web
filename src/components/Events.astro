@@ -1,18 +1,20 @@
 ---
+import { GET } from "@/pages/api/events";
 import EventCard from "./EventCard.astro";
-import { getEvents } from "@/hooks/getEvents";
-const events = await getEvents();
+import type { EventInfo } from "@/types";
 const { isInHomePage } = Astro.props;
+const response = await GET();
+const events: EventInfo[] = await response.json();
 ---
 
-<section class="px-4">
+<section class="max-w-[800px] mx-auto px-4 py-8 md:px-0">
   <div id="upcoming" class="text-5xl lg:text7xl font-bold text-center pt-8">
     <span
       class="bg-gradient-to-r from-bahamablue-900 via-bahamablue-700 to-rosecherry-700 bg-clip-text text-transparent"
       >Upcoming</span
     > Events 🗓️
   </div>
-  <div>
+  <div class="max-w-[800px] mx-auto px-4 py-8 md:px-0">
     {
       events
         .filter((event) => new Date(event.timeEnd.timestamp) > new Date())
@@ -45,24 +47,26 @@ const { isInHomePage } = Astro.props;
           </span>{" "}
           Events 🗓️
         </div>
-        <div>
-          {events
-            .filter((event) => new Date(event.timeEnd.timestamp) < new Date())
-            .sort(
-              (a, b) =>
-                Number(b.timeStart.timestamp) - Number(a.timeStart.timestamp)
-            )
-            .map((event) => (
-              <EventCard
-                title={event.title}
-                slug={event.slug}
-                description={event.description}
-                location={event.location}
-                timeStart={event.timeStart}
-                timeEnd={event.timeEnd}
-                image={event.imageUrl}
-              />
-            ))}
+        <div class="max-w-[800px] mx-auto px-4 py-8 md:px-0">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {events
+              .filter((event) => new Date(event.timeEnd.timestamp) < new Date())
+              .sort(
+                (a, b) =>
+                  Number(b.timeStart.timestamp) - Number(a.timeStart.timestamp)
+              )
+              .map((event) => (
+                <EventCard
+                  title={event.title}
+                  slug={event.slug}
+                  description={event.description}
+                  location={event.location}
+                  timeStart={event.timeStart}
+                  timeEnd={event.timeEnd}
+                  image={event.imageUrl}
+                />
+              ))}
+          </div>
         </div>
       </>
     )
