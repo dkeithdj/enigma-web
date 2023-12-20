@@ -1,5 +1,4 @@
 ---
-export const prerender = true;
 import Layout from "@/layouts/Layout.astro";
 import type { InferGetStaticParamsType } from "astro";
 import { Image } from "astro:assets";
@@ -8,39 +7,18 @@ import { getEvents } from "@/hooks/getEvents";
 import CalendarDateCard from "@/components/CalendarDateCard.astro";
 import LocationCard from "@/components/LocationCard.astro";
 
-export async function getStaticPaths() {
-  const events = await getEvents();
-  return events.map(
-    ({
-      slug,
-      title,
-      timeEnd,
-      timeStart,
-      location,
-      description,
-      time,
-      imageUrl,
-    }) => {
-      return {
-        params: { slug },
-        props: {
-          title,
-          timeEnd,
-          timeStart,
-          location,
-          description,
-          time,
-          imageUrl,
-        },
-      };
-    }
-  );
+const { slug } = Astro.params;
+
+const event = await getEvents().then((event) => {
+  return event.find((event) => event.slug === slug);
+});
+
+if (!event) {
+  return Astro.redirect("/404");
 }
 
-type Params = InferGetStaticParamsType<typeof getStaticPaths>;
-const { slug } = Astro.params as Params;
 const { title, timeEnd, timeStart, location, description, time, imageUrl } =
-  Astro.props;
+  event;
 ---
 
 <Layout title={`${title} | Enigma`}>
@@ -48,7 +26,7 @@ const { title, timeEnd, timeStart, location, description, time, imageUrl } =
     <div class="grid grid-rows-2 sm:grid-cols-2 sm:grid-rows-1 gap-4">
       <div class="">
         <Image
-          src={imageUrl ? imageUrl : "https://picsum.photos/100/200?random=1"}
+          src={imageUrl!}
           alt={title}
           width="800"
           height="500"
