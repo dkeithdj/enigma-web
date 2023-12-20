@@ -1,59 +1,34 @@
 ---
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { auth } from "@/firebase/server";
 import Layout from "@/layouts/Layout.astro";
-/* Get session cookie */
-// if (!Astro.cookies.has("session")) {
-//   return Astro.redirect("/signin");
-// }
-// const sessionCookie = Astro.cookies.get("session").value;
-// const decodedCookie = await auth.verifySessionCookie(sessionCookie);
-// const user = await auth.getUser(decodedCookie.uid);
-//
-// if (!user) {
-//   return Astro.redirect("/signin");
-// }
 ---
 
 <Layout title="About | Enigma">
-  <section class="py-12 p-4 md:mx-20">
-    <h1 class="text-5xl text-center pb-8">
-      About: <span class="font-semibold">The Organization</span>
-    </h1>
+  <section class="max-w-[800px] mx-auto px-4 py-8 md:px-0">
+    <div id="upcoming" class="text-5xl lg:text7xl font-bold text-center py-8">
+      The
+      <span
+        class="bg-gradient-to-r from-bahamablue-900 via-bahamablue-700 to-rosecherry-700 bg-clip-text text-transparent"
+        >Organization</span
+      >
+    </div>
     <Card className="mb-8">
       <CardHeader>
-        <CardTitle>Vision</CardTitle>
+        <CardTitle id="vision">Vision</CardTitle>
       </CardHeader>
       <CardContent>
         <p class="text-justify">
-          We aspire to be a community of <span class="font-bold"
-            >exceptional individuals</span
-          > equipped with the skills, knowledge, and mindset to excel in their
-          respective fields of expertise, pioneering a path toward a future
-          where technology is harnessed to make a profound and purposeful
-          impact, driving progress forward.
+          We aspire to be a community of exceptional individuals equipped with
+          the skills, knowledge, and mindset to excel in their respective fields
+          of expertise, pioneering a path toward a future where technology is
+          harnessed to make a profound and purposeful impact, driving progress
+          forward.
         </p>
       </CardContent>
     </Card>
     <Card className="mb-8">
       <CardHeader>
-        <CardTitle>Mission</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <p class="text-justify">
-          Our mission is to create a community of exceptional technology
-          students by providing resources, training, and support. We empower
-          members with the skills, knowledge, and mindset to drive technological
-          advancements. Through innovative programs, we foster a culture of
-          collaboration, lifelong learning, and ethical responsibility, shaping
-          a generation of professionals who will revolutionize industries and
-          contribute to a better future.
-        </p>
-      </CardContent>
-    </Card>
-    <Card>
-      <CardHeader>
-        <CardTitle>Goals</CardTitle>
+        <CardTitle id="mission">Mission</CardTitle>
       </CardHeader>
       <CardContent>
         <p class="text-justify">
@@ -68,10 +43,4 @@ import Layout from "@/layouts/Layout.astro";
       </CardContent>
     </Card>
   </section>
-  <!-- <section class="py-12 p-4 md:mx-20">
-    <h1 class="text-5xl text-center pb-8">
-      About: <span class="font-semibold">The Logo</span>
-    </h1>
-    <LogoProcess client:load />
-  </section> -->
 </Layout>
